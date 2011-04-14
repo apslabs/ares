@@ -1,7 +1,7 @@
 <%= semantic_form_for @factura do |f| %>
 <%= f.inputs do %>
   <%= f.input :fecha , :as => :date %>
-  <%= f.input :cliente, :label => false, :as => :select, :collection => Cliente.all.map{|c| [c.razonsocial, c.id]} %>
+  <%= f.input :cliente, :label => true, :as => :select, :collection => Cliente.all.map{|c| [c.razonsocial, c.id]} %>
   <%= f.input :importe %>
   <%= f.input :numero %>
   <%= f.input :fechavto , :as => :date %>

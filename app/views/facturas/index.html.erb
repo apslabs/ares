@@ -1,4 +1,4 @@
-<h1>Listing facturas</h1>
+<h1>Listado de facturas</h1>
 
 <table>
   <tr>
@@ -14,18 +14,18 @@
 
 <% @facturas.each do |factura| %>
   <tr>
-    <td><%= factura.cliente %></td>
+    <td><%= factura.cliente.razonsocial %></td>
     <td><%= factura.fecha %></td>
     <td><%= factura.importe %></td>
     <td><%= factura.numero %></td>
     <td><%= factura.fechavto %></td>
-    <td><%= link_to 'Show', factura %></td>
-    <td><%= link_to 'Edit', edit_factura_path(factura) %></td>
-    <td><%= link_to 'Destroy', factura, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Ver', factura %></td>
+    <td><%= link_to 'Editar', edit_factura_path(factura) %></td>
+    <td><%= link_to 'Borrar', factura, :confirm => 'Esta seguro?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Factura', new_factura_path %>
+<%= link_to 'Nueva Factura', new_factura_path %>

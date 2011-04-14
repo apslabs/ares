@@ -1,0 +1,22 @@
+<%= semantic_form_for @recibo do |f| %>
+<% if @recibo.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@recibo.errors.count, "error") %> prohibited this recibo from being saved:</h2>
+
+    <ul>
+    <% @recibo.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<%= f.inputs do %>
+  <%= f.input :fecha %>
+  <%= f.input :cliente, :label => true, :as => :select, :collection => Cliente.all.map{|c| [c.razonsocial, c.id]} %>
+  <%= f.input :importe %>
+  <%= f.input :numero %>
+<% end %>
+<%= f.buttons %>
+<% end %>

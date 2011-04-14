@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Cliente:</b>
+  <%= @notacredito.cliente.razonsocial %>
+</p>
+
+<p>
+  <b>Fecha:</b>
+  <%= @notacredito.fecha %>
+</p>
+
+<p>
+  <b>Importe:</b>
+  <%= @notacredito.importe %>
+</p>
+
+<p>
+  <b>Numero:</b>
+  <%= @notacredito.numero %>
+</p>
+
+
+<%= link_to 'Edit', edit_notacredito_path(@notacredito) %> |
+<%= link_to 'Back', notacreditos_path %>

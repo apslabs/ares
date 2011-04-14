@@ -1,0 +1,29 @@
+<h1>Listing recibos</h1>
+
+<table>
+  <tr>
+    <th>Cliente</th>
+    <th>Fecha</th>
+    <th>Importe</th>
+    <th>Numero</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @recibos.each do |recibo| %>
+  <tr>
+    <td><%= recibo.cliente.razonsocial %></td>
+    <td><%= recibo.fecha %></td>
+    <td><%= recibo.importe %></td>
+    <td><%= recibo.numero %></td>
+    <td><%= link_to 'Show', recibo %></td>
+    <td><%= link_to 'Edit', edit_recibo_path(recibo) %></td>
+    <td><%= link_to 'Destroy', recibo, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Recibo', new_recibo_path %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  cliente: 
+  fecha: 2011-04-14
+  importe: 9.99
+  numero: 1
+
+two:
+  cliente: 
+  fecha: 2011-04-14
+  importe: 9.99
+  numero: 1

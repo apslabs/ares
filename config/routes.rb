@@ -1,4 +1,8 @@
 Ares::Application.routes.draw do
+  resources :notacreditos
+
+  resources :recibos
+
   resources :facturas
 
   devise_for :users

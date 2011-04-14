@@ -1,0 +1,22 @@
+<%= semantic_form_for @notacredito do |f| %>
+<% if @notacredito.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@notacredito.errors.count, "error") %> prohibited this nota de credito from being saved:</h2>
+
+    <ul>
+    <% @notacredito.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<%= f.inputs do %>
+  <%= f.input :fecha %>
+  <%= f.input :cliente, :label => true, :as => :select, :collection => Cliente.all.map{|c| [c.razonsocial, c.id]} %>
+  <%= f.input :importe %>
+  <%= f.input :numero %>
+<% end %>
+<%= f.buttons %>
+<% end %>
