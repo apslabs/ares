@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  factura: 
+  fecha: 2011-04-14
+  importe: 9.99
+  recibo: 
+
+two:
+  factura: 
+  fecha: 2011-04-14
+  importe: 9.99
+  recibo: 
