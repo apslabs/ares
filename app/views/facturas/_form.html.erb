@@ -1,4 +1,15 @@
 <%= semantic_form_for @factura do |f| %>
+  <% if @factura.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@factura.errors.count, "error") %> prohibited this factura from being saved:</h2>
+
+      <ul>
+      <% @factura.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 <%= f.inputs do %>
   <%= f.input :fecha , :as => :date %>
   <%= f.input :cliente, :label => true, :as => :select, :collection => Cliente.all.map{|c| [c.razonsocial, c.id]} %>
