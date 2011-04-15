@@ -30,6 +30,62 @@
   <%= @cliente.contacto %>
 </p>
 
+<p>
+  <b>Facturas</b>
+</p>
+
+<table>
+ <tr>
+    <th>Numero</th>
+    <th>Fecha</th>
+    <th>Importe</th>
+    <th>Fecha Vto</th>
+  </tr>
+<% @cliente.factura.each do |cpbte| %>
+  <tr>
+    <td><%= cpbte.numero %></td>
+    <td><%= cpbte.fecha %></td>
+    <td><%= cpbte.importe %></td>
+    <td><%= cpbte.fechavto %></td>
+  </tr>
+<% end %>
+</table>
+
+<p>
+  <b>Recibos</b>
+</p>
+<table>
+ <tr>
+    <th>Numero</th>
+    <th>Fecha</th>
+    <th>Importe</th>
+  </tr>
+<% @cliente.recibo.each do |cpbte| %>
+  <tr>
+    <td><%= cpbte.numero %></td>
+    <td><%= cpbte.fecha %></td>
+    <td><%= cpbte.importe %></td>
+  </tr>
+<% end %>
+</table>
+
+<p>
+  <b>Nota de credito</b>
+</p>
+<table>
+ <tr>
+    <th>Numero</th>
+    <th>Fecha</th>
+    <th>Importe</th>
+  </tr>
+<% @cliente.notacredito.each do |cpbte| %>
+  <tr>
+    <td><%= cpbte.numero %></td>
+    <td><%= cpbte.fecha %></td>
+    <td><%= cpbte.importe %></td>
+  </tr>
+<% end %>
+</table>
 
 <%= link_to 'Edit', edit_cliente_path(@cliente) %> |
 <%= link_to 'Back', clientes_path %>
