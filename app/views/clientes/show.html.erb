@@ -48,6 +48,26 @@
     <td><%= cpbte.importe %></td>
     <td><%= cpbte.fechavto %></td>
   </tr>
+
+	<% cpbte.facturarecibo.each do |cpbteafectado| %>
+  		<tr>
+    		<td>recibo -------></td>
+    		<td><%= cpbteafectado.fecha %></td>
+    		<td><%= cpbteafectado.importe %></td>
+	  		<td><%= cpbteafectado.recibo.numero %></td>
+	  		<td><%= cpbteafectado.recibo.importe %></td>
+  		</tr>
+	<% end %>
+	
+	<% cpbte.facturanotacredito.each do |cpbteafectado| %>
+		<tr>
+  		<td>nota credito --></td>
+  		<td><%= cpbteafectado.fecha %></td>
+  		<td><%= cpbteafectado.importe %></td>
+  		<td><%= cpbteafectado.factura.numero %></td>
+  		<td><%= cpbteafectado.factura.importe %></td>
+		</tr>
+	<% end %>	
 <% end %>
 </table>
 
@@ -67,6 +87,15 @@
     <td><%= cpbte.fecha %></td>
     <td><%= cpbte.importe %></td>
   </tr>
+	<% cpbte.facturarecibo.each do |cpbteafectado| %>
+		<tr>
+  		<td>factura -------></td>
+  		<td><%= cpbteafectado.fecha %></td>
+  		<td><%= cpbteafectado.importe %></td>
+  		<td><%= cpbteafectado.factura.numero %></td>
+  		<td><%= cpbteafectado.factura.importe %></td>
+		</tr>
+	<% end %>	
 <% end %>
 </table>
 
@@ -86,6 +115,15 @@
     <td><%= cpbte.fecha %></td>
     <td><%= cpbte.importe %></td>
   </tr>
+	<% cpbte.facturanotacredito.each do |cpbteafectado| %>
+		<tr>
+		<td>factura -------></td>
+		<td><%= cpbteafectado.fecha %></td>
+		<td><%= cpbteafectado.importe %></td>
+  		<td><%= cpbteafectado.factura.numero %></td>
+  		<td><%= cpbteafectado.factura.importe %></td>
+		</tr>
+	<% end %>
 <% end %>
 </table>
 

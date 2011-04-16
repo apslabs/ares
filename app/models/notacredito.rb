@@ -1,4 +1,4 @@
 class Notacredito < ActiveRecord::Base
   belongs_to :cliente
-  has_many :factura
+  has_many :facturanotacredito
 end
