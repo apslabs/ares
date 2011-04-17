@@ -2,12 +2,6 @@
   <h1><%= image_tag("LogoApsWeb.jpg", :alt => "APSystems", :class => "round") %> <a href="/"><%=title%></a></h1>
   <div id="user-navigation">
     <ul class="wat-cf">
-      <li><%= link_to "Principal", root_path %></li>
-      <li><%= link_to "Clientes", clientes_path %></li>
-      <li><%= link_to "Facturas", facturas_path %></li>
-      <li><%= link_to "Recibos", recibos_path %></li>
-      <li><%= link_to "Notas de credito", notacreditos_path %></li>
-
       <li><%= link_to "Ayuda", help_path %></li>
       <li><%= link_to "Ingresar", '#' %></li>
       <li><a href="#"><%= t("web-app-theme.profile", :default => "Profile") %></a></li>
@@ -16,6 +10,12 @@
     </ul>
   </div>
   <div id="main-navigation">
-    <ul class="wat-cf"></ul>
+    <ul class="wat-cf">
+      <li><%= link_to "Principal", root_path %></li>
+      <li><%= link_to "Clientes", clientes_path %></li>
+      <li><%= link_to "Facturas", facturas_path %></li>
+      <li><%= link_to "Recibos", recibos_path %></li>
+      <li><%= link_to "Notas de credito", notacreditos_path %></li>
+    </ul>
   </div>
 </div>
