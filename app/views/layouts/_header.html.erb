@@ -3,10 +3,10 @@
   <div id="user-navigation">
     <ul class="wat-cf">
       <li><%= link_to "Ayuda", help_path %></li>
-      <li><%= link_to "Ingresar", '#' %></li>
+      <li><%= link_to "Ingresar", 'users/sign_in' %></li>
       <li><a href="#"><%= t("web-app-theme.profile", :default => "Profile") %></a></li>
       <li><a href="#"><%= t("web-app-theme.settings", :default => "Configuracion") %></a></li>
-      <li><%= link_to "Salir", '#' %></li>
+      <li><%= link_to "Salir", 'users/sign_out' %></li>
     </ul>
   </div>
   <div id="main-navigation">
