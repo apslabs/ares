@@ -1,9 +1,9 @@
-<h1>Listing clientes</h1>
+<h1>Listado de clientes</h1>
 
 <table>
   <tr>
     <th>Codigo</th>
-    <th>Razonsocial</th>
+    <th>Razon social</th>
     <th>Cuit</th>
     <th>Telefono</th>
     <th>Direccion</th>
@@ -21,13 +21,13 @@
     <td><%= cliente.telefono %></td>
     <td><%= cliente.direccion %></td>
     <td><%= cliente.contacto %></td>
-    <td><%= link_to 'Show', cliente %></td>
-    <td><%= link_to 'Edit', edit_cliente_path(cliente) %></td>
-    <td><%= link_to 'Destroy', cliente, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Ver', cliente %></td>
+    <td><%= link_to 'Editar', edit_cliente_path(cliente) %></td>
+    <td><%= link_to 'Borrar', cliente, :confirm => 'Esta ud. seguro?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Cliente', new_cliente_path %>
+<%= link_to 'Nuevo Cliente', new_cliente_path %>

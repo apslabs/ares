@@ -1,6 +1,3 @@
-
-
-
 <%= form_for(@factura) do |f| %>
   <% if @factura.errors.any? %>
     <div id="error_explanation">
@@ -39,3 +36,25 @@
 
 #sacado de _form.html.erb
 <%= f.text_field :cliente %>
+
+#formtastic
+<%= semantic_form_for @factura do |f| %>
+  <% if @factura.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@factura.errors.count, "error") %> prohibited this factura from being saved:</h2>
+      <ul>
+      <% @factura.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%= f.inputs do %>
+  <%= f.input :fecha , :as => :date %>
+  <%= f.input :cliente, :label => true, :as => :select, :collection => Cliente.all.map{|c| [c.razonsocial, c.id]} %>
+  <%= f.input :importe %>
+  <%= f.input :numero %>
+  <%= f.input :fechavto , :as => :date %>
+<% end %>
+<%= f.buttons %>
+<% end %>

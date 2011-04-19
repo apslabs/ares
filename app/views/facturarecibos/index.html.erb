@@ -1,10 +1,11 @@
-<h1>Listing facturarecibos</h1>
+<h1>Listado de afectaciones entre facturas y recibos</h1>
 
 <table>
   <tr>
     <th>N.Factura</th>
     <th>Fecha Factura</th>
     <th>Razon Social</th>
+    <th>Importe</th>
 
     <th>Fecha</th>
     <th>Importe</th>
@@ -12,6 +13,7 @@
     <th>N.Recibo</th>
     <th>Fecha Recibo</th>
     <th>Razon Social</th>
+    <th>Importe</th>
 
     <th></th>
     <th></th>
@@ -21,21 +23,21 @@
 <% @facturarecibos.each do |facturarecibo| %>
   <tr>
     <td><%= facturarecibo.factura.numero %></td>
-    <td><%= facturarecibo.factura.cliente.razonsocial %></td>
     <td><%= facturarecibo.factura.fecha %></td>
+    <td><%= facturarecibo.factura.cliente.razonsocial %></td>
     <td><%= facturarecibo.factura.importe %></td>
 
     <td><%= facturarecibo.fecha %></td>
     <td><%= facturarecibo.importe %></td>
 
     <td><%= facturarecibo.recibo.numero %></td>
-    <td><%= facturarecibo.recibo.cliente.razonsocial %></td>
     <td><%= facturarecibo.recibo.fecha %></td>
+    <td><%= facturarecibo.recibo.cliente.razonsocial %></td>
     <td><%= facturarecibo.recibo.importe %></td>
 
-    <td><%= link_to 'Show', facturarecibo %></td>
-    <td><%= link_to 'Edit', edit_facturarecibo_path(facturarecibo) %></td>
-    <td><%= link_to 'Destroy', facturarecibo, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Ver', facturarecibo %></td>
+    <td><%= link_to 'Editar', edit_facturarecibo_path(facturarecibo) %></td>
+    <td><%= link_to 'Borrar', facturarecibo, :confirm => 'Esta ud. seguro?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

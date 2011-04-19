@@ -2,7 +2,6 @@
   <% if @factura.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@factura.errors.count, "error") %> prohibited this factura from being saved:</h2>
-
       <ul>
       <% @factura.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
