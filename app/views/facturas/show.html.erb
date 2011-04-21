@@ -13,7 +13,7 @@
 </p>
 <p>
   <b>Importe:</b>
-  carga operador: <%= @factura.importe %>  | calculado: <%= @factura.totalfactura %>
+  <%= @factura.totalfactura %>
 </p>
 <p>
   <b>Numero:</b>
@@ -28,19 +28,19 @@
 <table>
   <tr>
 	 <th>Descripcion</th>
-	 <th>Cantidad</th>
-	 <th>Precio unitario</th>
-	 <th>Precio total</th>
+	 <th align="center">Cantidad</th>
+	 <th align="center">Precio unitario</th>
+	 <th align="center">Precio total</th>
 	 <th></th>
 	 <th></th>
 	 <th></th>	
   </tr>
 <% @factura.facturadetalle.each do |item| %>
   <tr>
-    <td><%= item.descripcion %></td>
-    <td><%= item.cantidad %></td>
-    <td><%= item.preciounitario %></td>
-    <td><%= item.totalitem %></td>
+    <td align="left" ><%= item.descripcion %></td>
+    <td align="right"><%= item.cantidad %></td>
+    <td align="right"><%= item.preciounitario %></td>
+    <td align="right"><%= item.totalitem %></td>
   </tr>
 <% end %>
 </table>
