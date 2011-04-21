@@ -36,7 +36,7 @@ Ares::Application.routes.draw do
     end
   end
   
-  #resources :facturadetalles
+  resources :facturadetalles
 
   #resources :asientos do
   #  post 'print'

@@ -20,7 +20,7 @@
     <td><%= factura.numero %></td>
     <td><%= factura.fechavto %></td>
     <td><%= link_to 'Ver', factura %></td>
-    <td><%= link_to 'Editar', edit_factura_path(factura) %></td>
+    <td><%= link_to 'Editar', edit_factura_path( factura ) %></td>
     <td><%= link_to 'Borrar', factura, :confirm => 'Esta seguro?', :method => :delete %></td>
   </tr>
 <% end %>

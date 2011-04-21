@@ -44,7 +44,7 @@
   </tr>
 <% end %>
 </table>
-<b>Total :</b> <%= @factura.facturadetalle.all.sum(&:totalitem) %>
+<b>Total :</b> <%= @factura.totalfactura %>
 </br>
 <%= link_to 'Editar', edit_factura_path(@factura) %> |
 <%= link_to 'Volver', facturas_path %>
