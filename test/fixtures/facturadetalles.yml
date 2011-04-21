@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  factura: 
+  descripcion: MyString
+  cantidad: 9.99
+  preciounitario: 9.99
+
+two:
+  factura: 
+  descripcion: MyString
+  cantidad: 9.99
+  preciounitario: 9.99

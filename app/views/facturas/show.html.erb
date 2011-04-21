@@ -2,29 +2,49 @@
 
 <p>
   <b>Cliente:</b>
-  <%= @factura.cliente.razonsocial %>
+  <%= @factura.cliente.razonsocial %> |
+  <%= @factura.cliente.cuit %> |
+  <%= @factura.cliente.telefono %> |
+  <%= @factura.cliente.direccion %>
 </p>
-
 <p>
   <b>Fecha:</b>
   <%= @factura.fecha %>
 </p>
-
 <p>
   <b>Importe:</b>
-  <%= @factura.importe %>
+  carga operador: <%= @factura.importe %>  | calculado: <%= @factura.totalfactura %>
 </p>
-
 <p>
   <b>Numero:</b>
   <%= @factura.numero %>
 </p>
-
 <p>
   <b>Fechavto:</b>
   <%= @factura.fechavto %>
 </p>
 
-
-<%= link_to 'Edit', edit_factura_path(@factura) %> |
-<%= link_to 'Back', facturas_path %>
+<b>Cantidad de items:</b> <%= @factura.facturadetalle.count %>
+<table>
+  <tr>
+	 <th>Descripcion</th>
+	 <th>Cantidad</th>
+	 <th>Precio unitario</th>
+	 <th>Precio total</th>
+	 <th></th>
+	 <th></th>
+	 <th></th>	
+  </tr>
+<% @factura.facturadetalle.each do |item| %>
+  <tr>
+    <td><%= item.descripcion %></td>
+    <td><%= item.cantidad %></td>
+    <td><%= item.preciounitario %></td>
+    <td><%= item.totalitem %></td>
+  </tr>
+<% end %>
+</table>
+<b>Total :</b> <%= @factura.facturadetalle.all.sum(&:totalitem) %>
+</br>
+<%= link_to 'Editar', edit_factura_path(@factura) %> |
+<%= link_to 'Volver', facturas_path %>

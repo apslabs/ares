@@ -1,0 +1,20 @@
+<%= semantic_form_for @facturadetalle do |f| %>
+  <% if @facturadetalle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@facturadetalle.errors.count, "error") %> prohibited this detalle de factura from being saved:</h2>
+      <ul>
+      <% @facturadetalle.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%= f.inputs do %>
+  <%= f.input :factura, :label => true, :as => :select, :collection => Factura.all.map{|c| [c.numero, c.id]} %>
+  <%= f.input :descripcion %>
+  <%= f.input :cantidad %>
+  <%= f.input :preciounitario%>
+<% end %>
+<%= f.buttons %>
+<% end %>
+

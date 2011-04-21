@@ -6,19 +6,19 @@
   <p><%= f.label :email %><br />
   <%= f.email_field :email %></p>
 
-  <p><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+  <p><%= f.label :password %> <i>(deje en blanco si no desea cambiarla)</i><br />
   <%= f.password_field :password %></p>
 
   <p><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></p>
 
-  <p><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+  <p><%= f.label :current_password %> <i>(necesitamos su contraseña actual para confirmar los cambios)</i><br />
   <%= f.password_field :current_password %></p>
 
   <p><%= f.submit "Actualizar" %></p>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h3>Cancelar mi cuenta</h3>
 
 <p>Unhappy? <%= link_to "Cancelar mi cuenta", registration_path(resource_name), :confirm => "Esta ud. seguro?", :method => :delete %>.</p>
 
