@@ -3,6 +3,8 @@ class Factura < ActiveRecord::Base
   has_many :facturarecibo
   has_many :facturanotacredito
   has_many :facturadetalle
+
+  accepts_nested_attributes_for :facturadetalle
   
   validates :fecha, :presence => true
   validates :numero, :presence => true, :length => { :maximum => 10 }, :uniqueness => true, :numericality => true
@@ -15,5 +17,4 @@ class Factura < ActiveRecord::Base
   def totalfactura
     facturadetalle.all.sum(&:totalitem)
   end
-  
 end

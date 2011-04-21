@@ -1,6 +1,8 @@
-<h1>Editing facturadetalle</h1>
+<h1>Editando detalle de factura</h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @facturadetalle %> |
-<%= link_to 'Back', facturadetalles_path %>
+<%= semantic_form_for [@facturadetalle] do |fd| %>
+  <%= fd.input :descripcion %>
+  <%= fd.input :cantidad %>
+  <%= fd.input :preciounitario %>
+  <%= fd.buttons %>
+<% end %>

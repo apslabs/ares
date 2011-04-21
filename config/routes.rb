@@ -1,6 +1,4 @@
 Ares::Application.routes.draw do
-  resources :facturadetalles
-
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
   match '/help',    :to => 'pages#help'
@@ -27,6 +25,22 @@ Ares::Application.routes.draw do
   devise_for :users
 
   resources :clientes
+
+  resources :facturas do
+    resources :facturadetalles, :only => [:new, :create, :index, :destroy, :edit]
+    member do
+      #get 'print', :action => :imprimir 
+    end
+    collection do
+      #get 'print'
+    end
+  end
+  
+  #resources :facturadetalles
+
+  #resources :asientos do
+  #  post 'print'
+  #end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

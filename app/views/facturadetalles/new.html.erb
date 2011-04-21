@@ -1,5 +1,9 @@
-<h1>New facturadetalle</h1>
+<h1>Factura Detalles#new</h1>
 
-<%= render 'form' %>
+<%= semantic_form_for [@factura, @facturadetalle] do |fd| %>
+  <%= fd.input :descripcion %>
+  <%= fd.input :cantidad %>
+  <%= fd.input :preciounitario %>
+  <%= fd.buttons %>
+<% end %>
 
-<%= link_to 'Volver', facturadetalles_path %>
