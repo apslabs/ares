@@ -9,34 +9,27 @@
 <%= semantic_form_for @factura do |f| %>
  <%= f.semantic_errors %>
 
-<%= f.inputs  :name => "Detalle" do %>
+<%= f.inputs do %>
   <%= f.input :fecha , :as => :date %>
   <%= f.input :cliente, :label => true, :as => :select, :collection => Cliente.all.map{|c| [c.razonsocial, c.id]} %>
-  <%= f.input :totalfactura %>
-  <%= f.input :numero %>
+  <%= f.input :numero , :as => :numeric, :input_html => { :size => 10, :style => "text-align:right;" } %>
   <%= f.input :fechavto , :as => :date %>
 	
-  <%= f.inputs do %>
+  <%= f.inputs :name => "Detalle" do %>
   <table class="tabla">
     <thead>
-    <tr>
-      <th><h2>Detalle</h2></th>
-    </tr>
-
     <tr>
        <th>Descripcion</th>
        <th>Cantidad</th>
        <th>Precio unitario</th>
-       <th>Total linea</th>
+       <th>Total por linea</th>
     </tr>
     </thead>
-
     <tbody>
     <%= f.semantic_fields_for :facturadetalle do |fd| %>
     <%= fd.semantic_errors %>
-
     <tr>
-        <td><%= fd.input :descripcion, :label => false %></td>
+        <td><%= fd.input :descripcion, :label => false, :as => :text %></td>
         <td><%= fd.input :cantidad, :label => false, :as => :numeric, :input_html => { :class => :para_calcula, :onblur => 'calcula_total(this);', :size => 10, :style => "text-align:right;"} %></td>
         <td><%= fd.input :preciounitario, :label => false, :as => :numeric, :input_html => {:onblur => 'calcula_total(this);', :class => :para_calcula, :size => 10, :style => "text-align:right;"} %></td>
 		<td><%= content_tag(:span, fd.object.totalitem, :class => 'calcula_total') %></td>
@@ -45,6 +38,8 @@
     <% end %>
     </tbody>
   </table>
+  <p><b>Importe total de factura:</b> <%= f.object.totalfactura %></p>
+
  <% end %>
 <% end %>
 

@@ -1,11 +1,19 @@
-<h1>Nuevo item de detalle de factura#new</h1>
+<h1>Nuevo item de detalle de factura # <%= @factura.numero %> new</h1>
 
+<p><b>Fecha:</b> <%= @factura.fecha %></p>
+<p><b>Razon social:</b> <%= @factura.cliente.razonsocial %></p>
+<p><b>cuit:</b> <%= @factura.cliente.cuit %></p>
+<p><b>telefono:</b> <%= @factura.cliente.telefono %></p>
+<br />
 <%= semantic_form_for [@factura, @facturadetalle] do |fd| %>
   <%= fd.semantic_errors %>
 
   <%= fd.input :descripcion %>
+
   <%= fd.input :cantidad %>
+
   <%= fd.input :preciounitario %>
+
   <%= fd.buttons %>
 <% end %>
 
