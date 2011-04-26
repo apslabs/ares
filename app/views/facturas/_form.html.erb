@@ -1,47 +1,18 @@
-<% content_for(:head) do %>
-  <%= javascript_tag do %>
-    function calcula_total(input){
-      var total = parseFloat($F($(input).up('tr').select('input.para_calcula')[0])) * parseFloat($F($(input).up('tr').select('input.para_calcula')[1]));
-      $(input).up('tr').select('.calcula_total')[0].innerHTML=total;
-    }
-  <% end %>
-<% end %>
 <%= semantic_form_for @factura do |f| %>
  <%= f.semantic_errors %>
 
 <%= f.inputs do %>
   <%= f.input :fecha , :as => :date %>
-  <%= f.input :cliente, :label => true, :as => :select, :collection => Cliente.all.map{|c| [c.razonsocial, c.id]} %>
+  <%= f.input :cliente, :label => true, :as => :select, :collection => Cliente.all.map{|c| [c.razonsocial, c.id]}, :include_blank => false %>
   <%= f.input :numero , :as => :numeric, :input_html => { :size => 10, :style => "text-align:right;" } %>
   <%= f.input :fechavto , :as => :date %>
-	
-  <%= f.inputs :name => "Detalle" do %>
-  <table class="tabla">
-    <thead>
-    <tr>
-       <th>Descripcion</th>
-       <th>Cantidad</th>
-       <th>Precio unitario</th>
-       <th>Total por linea</th>
-    </tr>
-    </thead>
-    <tbody>
-    <%= f.semantic_fields_for :facturadetalle do |fd| %>
-    <%= fd.semantic_errors %>
-    <tr>
-        <td><%= fd.input :descripcion, :label => false, :as => :text %></td>
-        <td><%= fd.input :cantidad, :label => false, :as => :numeric, :input_html => { :class => :para_calcula, :onblur => 'calcula_total(this);', :size => 10, :style => "text-align:right;"} %></td>
-        <td><%= fd.input :preciounitario, :label => false, :as => :numeric, :input_html => {:onblur => 'calcula_total(this);', :class => :para_calcula, :size => 10, :style => "text-align:right;"} %></td>
-		<td><%= content_tag(:span, fd.object.totalitem, :class => 'calcula_total') %></td>
-	    <td><%= link_to 'Borrar', fd.object , :confirm => 'Esta serguro?', :method => :delete %></td>
-    </tr>
-    <% end %>
-    </tbody>
-  </table>
-  <p><b>Importe total de factura:</b> <%= f.object.totalfactura %></p>
 
- <% end %>
+  <%= f.semantic_fields_for :facturadetalle do |fd|%>    
+     <%= render 'facturadetalle_fields', :f => fd %> 
+	 <div class="links">
+     <%= link_to_add_association 'agrega detalle', f, :facturadetalle %>
+	</div>
+  <% end %>
 <% end %>
-
 <%= f.buttons %>
 <% end %>

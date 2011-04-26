@@ -82,11 +82,15 @@ class FacturadetallesController < ApplicationController
   # DELETE /facturadetalles/1.xml
   def destroy
     @facturadetalle = Facturadetalle.find(params[:id])
+    @factura = Factura.find(@facturadetalle.factura_id)
     @facturadetalle.destroy
 
     respond_to do |format|
-      format.html { redirect_to(facturadetalles_url) }
+      format.html { redirect_to(edit_factura_url(@factura)) }
       format.xml  { head :ok }
+
+      #format.html { redirect_to(factura_url) }
+      #format.xml  { head :ok }
     end
   end
 end

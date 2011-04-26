@@ -1,0 +1,9 @@
+<div class="nested-fields">
+	<%= f.inputs do %>
+  		<%= f.input :descripcion %>
+  		<%= f.input :cantidad, :as => :numeric %>
+  		<%= f.input :preciounitario, :as => :numeric %>
+  		<%= f.input :tasaiva, :as => :numeric %>
+  		<%= link_to_remove_association "borra detalle", f %>
+	<% end %>
+</div>
