@@ -4,11 +4,12 @@ class Factura < ActiveRecord::Base
   has_many :facturanotacredito
   has_many :facturadetalles
 
-  accepts_nested_attributes_for :facturadetalles
+  accepts_nested_attributes_for :facturadetalles, :allow_destroy => true, :reject_if => :all_blank
+  # reject_if => {|attrs| attrs['cantidad'] = 0}
 
-  attr_accessible :numero, :cliente_id, :fechavto, :fecha, :facturadetalle_attributes 
+  attr_accessible :numero, :cliente_id, :fechavto, :fecha, :facturadetalles_attributes 
   
-  attr_accessor :totalfactura
+  attr_accessor :totalfactura, :count_items
   
   validates :fecha, :presence => true
   validates :numero, :presence => true, :length => { :maximum => 10 }, :uniqueness => true, :numericality => true
@@ -18,6 +19,10 @@ class Factura < ActiveRecord::Base
   scope :por_cliente, lambda {|cliente| where(:cliente_id => cliente) }
   
   def totalfactura
-    facturadetalles.sum("preciounitario * cantidad") # all.sum(&:totalitem)
+    facturadetalles.sum("preciounitario * cantidad * (1+(tasaiva/100))") # all.sum(&:totalitem)
   end
+  
+  def count_items
+    facturadetalles.count
+  end  
 end

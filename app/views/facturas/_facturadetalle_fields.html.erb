@@ -1,9 +1,9 @@
 <div class="nested-fields">
-	<tbody>
+	<%= f.inputs do %>
+	<table>
 		<tr>
-		<%= f.inputs do %>
 			<td>
-		  		<%= f.input :descripcion , :label => false %>
+  				<%= f.input :descripcion , :label => false %>
 			</td>
 			<td>
 		  		<%= f.input :cantidad, :label => false ,:as => :numeric %>
@@ -15,9 +15,9 @@
 		  		<%= f.input :tasaiva, :label => false, :as => :numeric %>
 			</td>
 			<td>
-		  		<%= link_to_remove_association "borrar", f %>
-			</td>
-		<% end %>		
-		</tr>	
-	</tbody>		
+				<%= link_to_remove_association "borrar", f %>
+			</td>			
+		</tr>
+	</table>
+	<% end %>		
 </div>

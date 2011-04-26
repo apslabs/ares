@@ -2,31 +2,34 @@
  <%= f.semantic_errors %>
 
 <%= f.inputs do %>
-  <%= f.input :fecha , :as => :date %>
+  <%= f.input :fecha , :as => :datepicker %>
   <%= f.input :cliente, :label => true, :as => :select, :collection => Cliente.all.map{|c| [c.razonsocial, c.id]}, :include_blank => false %>
   <%= f.input :numero , :as => :numeric, :input_html => { :size => 10, :style => "text-align:right;" } %>
-  <%= f.input :fechavto , :as => :date %>
+  <%= f.input :fechavto , :as => :datepicker %>
 
 <table>
-	<thead>
-	  <tr>
-		 <th>Descripcion</th>
-		 <th>Cantidad</th>
-		 <th>Precio unitario</th>
-		 <th>Tasa IVA</th>
-		 <th></th>		
-	  </tr>
-	</thead>
+	<tr>
+		<th>
+			descripcion
+		</th>
+		<th>
+			cantidad
+		</th>
+		<th>
+			precio unitario
+		</th>
+		<th>
+			tasa IVA
+		</th>
+	</tr>
+</table>
 
   <%= f.semantic_fields_for :facturadetalles do |fd|%>    
      <%= render 'facturadetalle_fields', :f => fd %> 
   <% end %>
-
-  <div class="links">
-  <%= link_to_add_association 'agrega detalle', f, :facturadetalles %>
-  </div>
-
-</table>
+	<div class="links">
+	<%= link_to_add_association 'agrega detalle', f, :facturadetalles, 'data-association-insertion-position' => :before %>
+	</div>
 
 <% end %>
 <%= f.buttons %>

@@ -1,30 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Cliente:</b>
-  <%= @factura.cliente.razonsocial %> |
-  <%= @factura.cliente.cuit %> |
-  <%= @factura.cliente.telefono %> |
-  <%= @factura.cliente.direccion %>
-</p>
-<p>
-  <b>Fecha:</b>
-  <%= @factura.fecha %>
-</p>
-<p>
-  <b>Importe:</b>
-  <%= @factura.totalfactura %>
-</p>
-<p>
-  <b>Numero:</b>
-  <%= @factura.numero %>
-</p>
-<p>
-  <b>Fechavto:</b>
-  <%= @factura.fechavto %>
-</p>
+<%= semantic_attributes_for @factura do |attr| %>
+  <%= attr.attributes "Cabecera" do %>
 
-<b>Cantidad de items:</b> <%= @factura.facturadetalles.count %>
+  	<%= attr.attribute :fecha %>
+  	<%= attr.attribute :numero %>
+  	<%= attr.attribute :totalfactura %>
+  	<%= attr.attribute :fechavto %>
+
+	<%= attr.attributes :for => :cliente do |cliente| %>
+		<%= cliente.attribute :razonsocial , :label => "Razón social"%>
+	 	<%= cliente.attribute :cuit %>
+   	  	<%= cliente.attribute :telefono %>
+   	  	<%= cliente.attribute :direccion %>
+	<% end.html_safe %>
+
+  	<%= attr.attribute :count_items, :label => "Cantidad de items en la factura" %>
+  <% end %>
+<% end %>
+
 <table>
   <tr>
 	 <th>Descripcion</th>

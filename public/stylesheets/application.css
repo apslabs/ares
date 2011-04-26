@@ -1,0 +1,6 @@
+#ui-datepicker-div{display:none}
+form.formtastic fieldset > ol > li label{float:none}
+
+div.attrtastic div.attributes ol li.attribute span.label {float:left; display:inline; width:30%;}
+div.attrtastic div.attributes ol li.attribute span.value {display:inline; width:50%;}
+.attributes div.legend {font-size:20px;}

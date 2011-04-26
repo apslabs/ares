@@ -14,6 +14,7 @@ module Ares
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
+    config.autoload_paths += %W(#{Rails.root}/lib/autoload)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -38,5 +39,10 @@ module Ares
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    
+    # formtastic datepicker
+    config.after_initialize do
+      Formtastic::SemanticFormBuilder.send(:include, Apslabs::Formtastic::DatePicker)
+    end
   end
 end
