@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  factura: 
+  cantidad: 9.99
+  preciounitario: 9.99
+  descripcion: MyText
+  tasaiva: 9.99
+
+two:
+  factura: 
+  cantidad: 9.99
+  preciounitario: 9.99
+  descripcion: MyText
+  tasaiva: 9.99

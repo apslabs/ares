@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Factura:</b>
+  <%= @facturaitem.factura %>
+</p>
+
+<p>
+  <b>Cantidad:</b>
+  <%= @facturaitem.cantidad %>
+</p>
+
+<p>
+  <b>Preciounitario:</b>
+  <%= @facturaitem.preciounitario %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @facturaitem.descripcion %>
+</p>
+
+<p>
+  <b>Tasaiva:</b>
+  <%= @facturaitem.tasaiva %>
+</p>
+
+
+<%= link_to 'Edit', edit_facturaitem_path(@facturaitem) %> |
+<%= link_to 'Back', facturaitems_path %>

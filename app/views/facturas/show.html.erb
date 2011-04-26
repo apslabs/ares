@@ -24,7 +24,7 @@
   <%= @factura.fechavto %>
 </p>
 
-<b>Cantidad de items:</b> <%= @factura.facturadetalle.count %>
+<b>Cantidad de items:</b> <%= @factura.facturadetalles.count %>
 <table>
   <tr>
 	 <th>Descripcion</th>
@@ -36,7 +36,7 @@
 	 <th></th>
 	 <th></th>	
   </tr>
-<% @factura.facturadetalle.each do |item| %>
+<% @factura.facturadetalles.each do |item| %>
   <tr>
     <td align="left" ><%= item.descripcion %></td>
     <td align="right"><%= item.cantidad %></td>

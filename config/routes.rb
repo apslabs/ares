@@ -1,4 +1,6 @@
 Ares::Application.routes.draw do
+  resources :facturaitems
+
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
   match '/help',    :to => 'pages#help'

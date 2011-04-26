@@ -2,9 +2,9 @@ class Factura < ActiveRecord::Base
   belongs_to :cliente
   has_many :facturarecibo
   has_many :facturanotacredito
-  has_many :facturadetalle
+  has_many :facturadetalles
 
-  accepts_nested_attributes_for :facturadetalle
+  accepts_nested_attributes_for :facturadetalles
 
   attr_accessible :numero, :cliente_id, :fechavto, :fecha, :facturadetalle_attributes 
   
@@ -18,6 +18,6 @@ class Factura < ActiveRecord::Base
   scope :por_cliente, lambda {|cliente| where(:cliente_id => cliente) }
   
   def totalfactura
-    facturadetalle.sum("preciounitario * cantidad") # all.sum(&:totalitem)
+    facturadetalles.sum("preciounitario * cantidad") # all.sum(&:totalitem)
   end
 end

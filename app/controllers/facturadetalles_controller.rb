@@ -47,12 +47,12 @@ class FacturadetallesController < ApplicationController
   # POST /facturadetalles.xml
   def create
     @factura = Factura.find(params[:factura_id])
-    @facturadetalle = @factura.facturadetalle.create(params[:facturadetalle])
+    @facturadetalles = @factura.facturadetalles.create(params[:facturadetalle])
     
     #@facturadetalle = Facturadetalle.new(params[:facturadetalle])
 
     respond_to do |format|
-      if @facturadetalle.save
+      if @facturadetalles.save
         format.html { redirect_to(@factura, :notice => 'Facturadetalle was successfully created.') }
         format.xml  { render :xml => @factura, :status => :created, :location => @factura }
       else

@@ -7,12 +7,27 @@
   <%= f.input :numero , :as => :numeric, :input_html => { :size => 10, :style => "text-align:right;" } %>
   <%= f.input :fechavto , :as => :date %>
 
-  <%= f.semantic_fields_for :facturadetalle do |fd|%>    
+<table>
+	<thead>
+	  <tr>
+		 <th>Descripcion</th>
+		 <th>Cantidad</th>
+		 <th>Precio unitario</th>
+		 <th>Tasa IVA</th>
+		 <th></th>		
+	  </tr>
+	</thead>
+
+  <%= f.semantic_fields_for :facturadetalles do |fd|%>    
      <%= render 'facturadetalle_fields', :f => fd %> 
-	 <div class="links">
-     <%= link_to_add_association 'agrega detalle', f, :facturadetalle %>
-	</div>
   <% end %>
+
+  <div class="links">
+  <%= link_to_add_association 'agrega detalle', f, :facturadetalles %>
+  </div>
+
+</table>
+
 <% end %>
 <%= f.buttons %>
 <% end %>
