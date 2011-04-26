@@ -1,11 +1,9 @@
-<p id="notice"><%= notice %></p>
-
 <%= semantic_attributes_for @factura do |attr| %>
   <%= attr.attributes "Cabecera" do %>
 
   	<%= attr.attribute :fecha %>
-  	<%= attr.attribute :numero %>
-  	<%= attr.attribute :totalfactura %>
+  	<%= attr.attribute :numero , :label => "Numero de factura"%>
+  	<%= attr.attribute :totalfactura, :label => "Total de factura" %>
   	<%= attr.attribute :fechavto %>
 
 	<%= attr.attributes :for => :cliente do |cliente| %>

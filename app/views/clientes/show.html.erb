@@ -1,35 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Codigo:</b>
-  <%= @cliente.codigo %>
-</p>
-
-<p>
-  <b>Razon Social:</b>
-  <%= @cliente.razonsocial %>
-</p>
-
-<p>
-  <b>Cuit:</b>
-  <%= @cliente.cuit %>
-</p>
-
-<p>
-  <b>Telefono:</b>
-  <%= @cliente.telefono %>
-</p>
-
-<p>
-  <b>Direccion:</b>
-  <%= @cliente.direccion %>
-</p>
-
-<p>
-  <b>Contacto:</b>
-  <%= @cliente.contacto %>
-</p>
-
+<%= semantic_attributes_for @cliente do |attr| %>
+  <%= attr.attributes do %>
+	<%= attr.attribute :razonsocial , :label => "Razón social"%>
+	<%= attr.attribute :cuit %>
+   	<%= attr.attribute :telefono %>
+   	<%= attr.attribute :direccion %>
+  	<%= attr.attribute :contacto , :label => "Contacto", :display_empty => true%>
+  <% end %>
+<% end %>
 <hr>
 <p>
   <b>Facturas</b>

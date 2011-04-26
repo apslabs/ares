@@ -11,6 +11,9 @@ class Facturadetalle < ActiveRecord::Base
 
   def totalitem
     self.tasaiva = 0 if self.tasaiva.nil?
+    self.preciounitario = 0 if self.preciounitario.nil?
+    self.cantidad = 0 if self.cantidad.nil?
+    
     self.preciounitario * self.cantidad * (1 + (self.tasaiva/100))
   end  
 end

@@ -1,3 +1,14 @@
+<% content_for(:head) do %>
+  <%= javascript_tag do %>
+    function calcula_total(input){
+      var total = parseFloat($($(input).closest('tr').find('input.para_calcula')[0]).val()) * 	parseFloat($($(input).closest('tr').find('input.para_calcula')[1]).val()) * 
+(1 + (parseFloat($($(input).closest('tr').find('input.para_calcula')[2]).val())/100));
+
+      $($(input).closest('tr').find('.calcula_total')[0]).html(total.toFixed(2));
+    }
+  <% end %>
+<% end %>
+
 <%= semantic_form_for @factura do |f| %>
  <%= f.semantic_errors %>
 
@@ -9,27 +20,24 @@
 
 <table>
 	<tr>
-		<th>
-			descripcion
-		</th>
-		<th>
-			cantidad
-		</th>
-		<th>
-			precio unitario
-		</th>
-		<th>
-			tasa IVA
-		</th>
+		<th>Descripcion</th>
+		<th>Cantidad</th>
+		<th>Precio unitario</th>
+		<th>tasa IVA</th>
+		<th>Total item</th>
+		<th> </th>		
 	</tr>
 </table>
 
-  <%= f.semantic_fields_for :facturadetalles do |fd|%>    
-     <%= render 'facturadetalle_fields', :f => fd %> 
-  <% end %>
-	<div class="links">
-	<%= link_to_add_association 'agrega detalle', f, :facturadetalles, 'data-association-insertion-position' => :before %>
-	</div>
+<div class="links">
+	<%= link_to_add_association 'agrega detalle', f, :facturadetalles,'data-association-insertion-position' => :after %>
+</div>
+
+<div class='detalles'>
+	<%= f.semantic_fields_for :facturadetalles do |fd|%>    
+    	<%= render 'facturadetalle_fields', :f => fd %> 
+	<% end %>
+</div>
 
 <% end %>
 <%= f.buttons %>
