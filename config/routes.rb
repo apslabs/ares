@@ -1,4 +1,8 @@
 Ares::Application.routes.draw do
+  resources :tasaivas
+
+  resources :condicionivas
+
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
   match '/help',    :to => 'pages#help'

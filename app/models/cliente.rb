@@ -1,7 +1,25 @@
+# == Schema Information
+# Schema version: 20110427202648
+#
+# Table name: clientes
+#
+#  id              :integer         not null, primary key
+#  codigo          :string(255)
+#  razonsocial     :string(255)
+#  cuit            :string(255)
+#  telefono        :string(255)
+#  direccion       :string(255)
+#  contacto        :string(255)
+#  created_at      :datetime
+#  updated_at      :datetime
+#  condicioniva_id :integer
+#
+
 class Cliente < ActiveRecord::Base
-  has_many :factura
-  has_many :recibo
-  has_many :notacredito
+  has_many :facturas
+  has_many :recibos
+  has_many :notacreditos
+  belongs_to :condicioniva
 
   validates :cuit, :presence => true, :length => { :maximum => 11 }, :uniqueness => true
   validates :razonsocial, :presence => true
@@ -10,8 +28,18 @@ class Cliente < ActiveRecord::Base
   validates_numericality_of :cuit, :only_integer => true, :message => "solo numeros"
 #  validates_inclusion_of :cuit, :in => 20000000000..38000000000, :message => "solo puede ingresar numeros entre 20 y 38."
 
+  attr_accessible :razonsocial, :condicioniva_id, :codigo, :cuit, :telefono, :direccion 
 
   scope :sin_telefono, where("clientes.telefono = '' ")
   scope :no_actualizados, where("updated_at IS NULL" )
   scope :orden_alfabetico, order("clientes.razonsocial")
+  
+  # control para 
+  before_destroy :control_sin_comprobantes
+  
+  def control_sin_comprobantes
+     #  raise "no puede borrar si posees comprobantes cargados" unless facturas.any? || recibos.any? || notacreditos.any?
+
+    raise "no puede borrar si posees comprobantes cargados" unless [facturas,recibos,notacreditos].any? {|cpbte| cpbte.any? }
+  end
 end

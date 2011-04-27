@@ -1,3 +1,17 @@
+# == Schema Information
+# Schema version: 20110427202648
+#
+# Table name: facturas
+#
+#  id         :integer         not null, primary key
+#  cliente_id :integer
+#  fecha      :date
+#  numero     :integer
+#  fechavto   :date
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Factura < ActiveRecord::Base
   belongs_to :cliente
   has_many :facturarecibo

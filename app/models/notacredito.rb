@@ -1,3 +1,17 @@
+# == Schema Information
+# Schema version: 20110427202648
+#
+# Table name: notacreditos
+#
+#  id         :integer         not null, primary key
+#  cliente_id :integer
+#  fecha      :date
+#  importe    :decimal(, )
+#  numero     :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Notacredito < ActiveRecord::Base
   belongs_to :cliente
   has_many :facturanotacredito

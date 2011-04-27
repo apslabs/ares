@@ -1,0 +1,27 @@
+<h1>Listing tasaivas</h1>
+
+<table>
+  <tr>
+    <th>Detalle</th>
+    <th>Porcentaje</th>
+    <th>Vencimiento</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tasaivas.each do |tasaiva| %>
+  <tr>
+    <td><%= tasaiva.detalle %></td>
+    <td><%= tasaiva.porcentaje %></td>
+    <td><%= tasaiva.vencimiento %></td>
+    <td><%= link_to 'Show', tasaiva %></td>
+    <td><%= link_to 'Edit', edit_tasaiva_path(tasaiva) %></td>
+    <td><%= link_to 'Destroy', tasaiva, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tasaiva', new_tasaiva_path %>

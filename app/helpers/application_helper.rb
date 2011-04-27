@@ -8,4 +8,6 @@ module ApplicationHelper
         "#{base_title} | #{@title}"
       end
     end
+    
+    include Apslabs::Helpers::Layout
 end

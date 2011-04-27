@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  detalle: MyString
+  porcentaje: 9.99
+  vencimiento: 2011-04-27
+
+two:
+  detalle: MyString
+  porcentaje: 9.99
+  vencimiento: 2011-04-27

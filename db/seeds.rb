@@ -5,3 +5,5 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+condicionesiva = Condicioniva.create([{ :detalle => 'responsable inscripto'},{:detalle => 'exento'},{:detalle => 'consumidor final'}])

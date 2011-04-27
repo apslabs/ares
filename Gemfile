@@ -10,7 +10,7 @@ gem 'devise'
 
 gem 'formtastic'
 gem 'attrtastic'
-
+gem 'haml-rails'
 gem 'compass'
 gem 'cocoon'
 gem "jquery-rails"
@@ -35,6 +35,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
+    gem 'annotate'
     gem 'web-app-theme', '>= 0.6.2'
 #   gem 'webrat'
 end

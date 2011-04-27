@@ -1,10 +1,29 @@
 <h1>Listado de clientes</h1>
 
+<%= render 'sidebar' %>
+
+<% content_for(:controls) do %>
+<%= controls do |c|
+         c.item "Nuevo", new_cliente_path, :icon => "add"
+         c.item "Exportar PDF", root_path, :method => :delete
+end %>
+<%end%>
+
+<% content_for(:breadcrumbs) do %>
+<%= breadcrumbs do |b|
+	b.item "Home", root_path
+    b.item "News", root_path
+    b.item "Awesome New Things", root_path, :active => true
+end %>
+<%end%>
+
+
 <table>
   <tr>
     <th>Codigo</th>
     <th>Razon social</th>
     <th>Cuit</th>
+    <th>Condicion IVA</th>
     <th>Telefono</th>
     <th>Direccion</th>
     <th>Contacto</th>
@@ -18,16 +37,13 @@
     <td><%= cliente.codigo %></td>
     <td><%= cliente.razonsocial %></td>
     <td><%= cliente.cuit %></td>
+    <td><%= cliente.condicioniva.detalle %></td>
     <td><%= cliente.telefono %></td>
     <td><%= cliente.direccion %></td>
     <td><%= cliente.contacto %></td>
-    <td><%= link_to 'Ver', cliente %></td>
-    <td><%= link_to 'Editar', edit_cliente_path(cliente) %></td>
-    <td><%= link_to 'Borrar', cliente, :confirm => 'Esta ud. seguro?', :method => :delete %></td>
+    <td><%= link_to icon('application_go', :small, :title => 'ver'), cliente %></td>
+    <td><%= link_to icon('application_edit', :small, :title => 'editar'), edit_cliente_path(cliente) %></td>
+    <td><%= link_to icon('application_delete', :small, :title => 'borrar'), cliente, :confirm => 'Esta ud. seguro?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'Nuevo Cliente', new_cliente_path %>

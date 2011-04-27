@@ -28,6 +28,7 @@ GEM
       activemodel (= 3.0.5)
       activesupport (= 3.0.5)
     activesupport (3.0.5)
+    annotate (2.4.0)
     arel (2.0.9)
     attrtastic (0.3.1)
       actionpack (~> 3.0.0)
@@ -48,6 +49,11 @@ GEM
       activesupport (>= 2.3.7)
       i18n (~> 0.4)
     haml (3.0.25)
+    haml-rails (0.3.4)
+      actionpack (~> 3.0)
+      activesupport (~> 3.0)
+      haml (~> 3.0)
+      railties (~> 3.0)
     i18n (0.5.0)
     jquery-rails (0.2.6)
       rails (~> 3.0)
@@ -94,11 +100,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   attrtastic
   cocoon
   compass
   devise
   formtastic
+  haml-rails
   jquery-rails
   rails (= 3.0.5)
   sqlite3
