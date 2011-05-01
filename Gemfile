@@ -13,7 +13,9 @@ gem 'attrtastic'
 gem 'haml-rails'
 gem 'compass'
 gem 'cocoon'
-gem "jquery-rails"
+gem 'jquery-rails'
+gem 'kaminari'
+gem 'meta_search'
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -6,6 +6,16 @@
 end%>
 <% end %>
 
+<% content_for(:breadcrumbs) do %>
+<%= breadcrumbs do |b|
+	b.item "Principal", root_path
+    b.item "Clientes", clientes_path
+    b.item @cliente.razonsocial, root_path, :active => true
+end %>
+<%end%>
+
+<%= render 'sidebar' %>
+
 <%= semantic_attributes_for @cliente do |attr| %>
   <%= attr.attributes do %>
 	<%= attr.attribute :razonsocial , :label => "Razón social"%>

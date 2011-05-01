@@ -1,22 +1,20 @@
 <h1>Listado de clientes</h1>
 
-<%= render 'sidebar' %>
+<%= render 'filtros' %>
 
 <% content_for(:controls) do %>
 <%= controls do |c|
          c.item "Nuevo", new_cliente_path, :icon => "add"
-         c.item "Exportar PDF", root_path, :method => :delete
+         c.item "Exportar PDF", root_path, :icon => "report_go", :method => :delete
 end %>
 <%end%>
 
 <% content_for(:breadcrumbs) do %>
 <%= breadcrumbs do |b|
-	b.item "Home", root_path
-    b.item "News", root_path
-    b.item "Awesome New Things", root_path, :active => true
+	b.item "Principal", root_path
+    b.item "Clientes", clientes_path, :active => true
 end %>
 <%end%>
-
 
 <table>
   <tr>
@@ -47,3 +45,6 @@ end %>
   </tr>
 <% end %>
 </table>
+<%= paginate @clientes %>
+<br/>
+<br/>

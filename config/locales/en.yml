@@ -3,3 +3,9 @@
 
 en:
   hello: "Hello world"
+  views:
+      pagination:
+          first: "&lt;&lt;"
+          previous: "&lt;"
+          next: "&gt;"
+          last: "&gt;&gt;"

@@ -28,8 +28,10 @@ Ares::Application.routes.draw do
 
   devise_for :users
 
-  resources :clientes
-
+  resources :clientes do 
+    resources :facturas, :only => [:new, :create]
+  end  
+    
   resources :facturas do
     resources :facturadetalles, :only => [:new, :create, :index, :destroy, :edit]
     member do

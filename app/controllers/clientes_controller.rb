@@ -4,7 +4,11 @@ class ClientesController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-    @clientes = Cliente.all
+#    @clientes = Cliente.all .page[params[:page]]
+    @search = Cliente.search(params[:search])
+    @clientes = @search.order("razonsocial").page(params[ :page ]).per(5)
+
+#    @clientes = Cliente.order("razonsocial").page(params[ :page ]).per(5)
 
     respond_to do |format|
       format.html # index.html.erb

@@ -11,7 +11,7 @@
     -# Mobile viewport optimized: j.mp/bplateviewport
     %meta{:content => "width=device-width; initial-scale=1.0", :name => "viewport" }/
     %title
-      Odiseo ::
+      Ares ::
       = yield(:title) if content_for?(:title)
     = stylesheet_link_tag 'jquery.tipsy', :media => 'screen'
     = stylesheet_link_tag 'apslabs', :media => 'screen'
@@ -49,6 +49,7 @@
               = yield(:controls) if content_for?(:controls)
               %h2.title= yield(:title) if content_for?(:title)
               .inner
+                = yield(:filtros) if content_for?(:filtros)
                 = yield
         - if content_for?(:sidebar)
           #sidebar

@@ -27,7 +27,9 @@ class FacturasController < ApplicationController
   # GET /facturas/new.xml
   def new
     @factura = Factura.new
-
+    @cliente = Cliente.find(params[:cliente_id])
+    @factura.cliente_id = @cliente.id
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @factura }
