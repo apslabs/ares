@@ -1,2 +1,3 @@
-%h5= "Conectado como #{current_user.email}"
+- if current_user
+	%h5= "Conectado como #{current_user.email}"
 

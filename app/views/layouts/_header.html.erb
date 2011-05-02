@@ -1,5 +1,6 @@
 <div id="header">
   <h1><%= image_tag("LogoApsWeb.jpg", :alt => "APSystems", :class => "round") %> <a href="/"><%=title%></a></h1>
+<% if current_user %>
   <div id="user-navigation">
     <ul class="wat-cf">
       <li><%= link_to "Ayuda", help_path %></li>
@@ -22,4 +23,5 @@
       <li><%= link_to "Facturas vs Notas de credito", facturanotacreditos_path %></li>
     </ul>
   </div>
+<% end %>
 </div>
