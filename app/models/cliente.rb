@@ -28,7 +28,7 @@ class Cliente < ActiveRecord::Base
   validates_numericality_of :cuit, :only_integer => true, :message => "solo numeros"
 #  validates_inclusion_of :cuit, :in => 20000000000..38000000000, :message => "solo puede ingresar numeros entre 20 y 38."
 
-  attr_accessible :razonsocial, :condicioniva_id, :codigo, :cuit, :telefono, :direccion 
+  attr_accessible :razonsocial, :condicioniva_id, :codigo, :cuit, :telefono, :direccion, :contacto
 
   scope :sin_telefono, where("clientes.telefono = '' ")
   scope :no_actualizados, where("updated_at IS NULL" )
@@ -38,8 +38,14 @@ class Cliente < ActiveRecord::Base
   before_destroy :control_sin_comprobantes
   
   def control_sin_comprobantes
-     #  raise "no puede borrar si posees comprobantes cargados" unless facturas.any? || recibos.any? || notacreditos.any?
+     #  raise "no puede borrar si posees comprobantes cargados" unless facturas.any? || recibos.any? || notacreditos.any
 
-    raise "no puede borrar si posees comprobantes cargados" unless [facturas,recibos,notacreditos].any? {|cpbte| cpbte.any? }
+   if [facturas,recibos,notacreditos].any? {|cpbte| cpbte.any? }
+     self.errors[:base] = "error que queres hacer?"
+     return false
+     #raise "estamos en el horno"
+   end
+   
+    # raise "no puede borrar si posees comprobantes cargados" if [facturas,recibos,notacreditos].any? {|cpbte| cpbte.any? }
   end
 end

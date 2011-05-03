@@ -33,8 +33,18 @@ class Factura < ActiveRecord::Base
   scope :por_cliente, lambda {|cliente| where(:cliente_id => cliente) }
   
   def totalfactura
-    facturadetalles.sum("preciounitario * cantidad * (1+(tasaiva/100))") # all.sum(&:totalitem)
+    #facturadetalles.sum("preciounitario * cantidad * (1+(tasaiva/100))") 
+
+    facturadetalles.all.sum(&:totalitem)
   end
+
+  def totalivafactura
+    #facturadetalles.sum("preciounitario * cantidad * (1+(tasaiva/100))") 
+
+    facturadetalles.all.sum(&:totalivaitem)
+  end
+
+
   
   def count_items
     facturadetalles.count

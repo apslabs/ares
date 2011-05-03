@@ -4,8 +4,7 @@
   <div class="filters-content">
 	<%= semantic_form_for @search do |f| %>
 	   <%= f.inputs do %>
-	   <%= f.input :razonsocial_contains, :label => "Razon social" %>
-	   <%= f.input :cuit_contains, :label => "CUIT" %>	
+	   <%= f.input :numero_contains, :label => "Fecha emision" %>	
 	   <% end %>
 	   <%= f.buttons do %>
 	      <%= f.commit_button :search %>

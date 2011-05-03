@@ -10,4 +10,8 @@
 #
 
 class Condicioniva < ActiveRecord::Base
+  has_many :clientes
+  
+  validates :detalle, :presence => true
+  validates :letra, :presence => true
 end

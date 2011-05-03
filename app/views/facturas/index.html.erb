@@ -1,5 +1,12 @@
 <h1>Listado de facturas</h1>
 
+<% content_for(:controls) do %>
+<%= controls do |c|
+         c.item "Nuevo", new_factura_path, :icon => "add"
+         c.item "Exportar PDF", root_path, :icon => "report_go", :method => :delete
+end %>
+<%end%>
+
 <table>
   <tr>
     <th>Cliente</th>
@@ -14,7 +21,7 @@
   </tr>
 <% @facturas.each do |factura| %>
   <tr>
-    <td><%= factura.cliente.razonsocial %></td>
+    <td><%= factura.cliente.try(:razonsocial) %></td>
     <td><%= factura.fecha %></td>
     <td align="right"><%= factura.totalfactura %></td>
     <td align="right"><%= factura.numero %></td>
@@ -23,7 +30,11 @@
     <td><%= link_to 'Ver   ', factura %></td>
     <td><%= link_to 'Editar', edit_factura_path( factura ) %></td>
     <td><%= link_to 'Borrar', factura, :confirm => 'Esta seguro?', :method => :delete %></td>
+    <td><%= link_to 'Imprimir', print_factura_path( factura ) %></td>
+
   </tr>
 <% end %>
 </table>
-<%= link_to 'Nueva Factura', new_factura_path %>
+<%= paginate @facturas %>
+<br/>
+<br/>

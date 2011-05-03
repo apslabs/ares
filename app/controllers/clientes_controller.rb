@@ -4,9 +4,8 @@ class ClientesController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-#    @clientes = Cliente.all .page[params[:page]]
     @search = Cliente.search(params[:search])
-    @clientes = @search.order("razonsocial").page(params[ :page ]).per(5)
+    @clientes = @search.order("razonsocial").page(params[ :page ]).per(10)
 
 #    @clientes = Cliente.order("razonsocial").page(params[ :page ]).per(5)
 

@@ -35,10 +35,10 @@ Ares::Application.routes.draw do
   resources :facturas do
     resources :facturadetalles, :only => [:new, :create, :index, :destroy, :edit]
     member do
-      #get 'print', :action => :imprimir 
+      get 'print', :action => :imprimir 
     end
     collection do
-      #get 'print'
+      get 'print'
     end
   end
   

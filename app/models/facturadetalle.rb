@@ -24,6 +24,14 @@ class Facturadetalle < ActiveRecord::Base
   validates :descripcion, :presence => true
   validates :tasaiva, :presence => true, :numericality => true
 
+  def totalivaitem
+    self.tasaiva = 0 if self.tasaiva.nil?
+    self.preciounitario = 0 if self.preciounitario.nil?
+    self.cantidad = 0 if self.cantidad.nil?
+    
+    self.preciounitario * self.cantidad * (self.tasaiva/100)
+  end  
+
   def totalitem
     self.tasaiva = 0 if self.tasaiva.nil?
     self.preciounitario = 0 if self.preciounitario.nil?
