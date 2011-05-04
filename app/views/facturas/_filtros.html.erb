@@ -4,7 +4,7 @@
   <div class="filters-content">
 	<%= semantic_form_for @search do |f| %>
 	   <%= f.inputs do %>
-	   <%= f.input :numero_contains, :label => "Fecha emision" %>	
+	   <%= f.input :numero_contains %>	
 	   <% end %>
 	   <%= f.buttons do %>
 	      <%= f.commit_button :search %>

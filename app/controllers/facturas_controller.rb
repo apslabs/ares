@@ -5,7 +5,7 @@ class FacturasController < ApplicationController
   
   def index
     @search = Factura.search(params[:search])
-    @facturas = @search.order("numero").page(params[ :page ]).per(10)
+    @facturas = @search.page(params[ :page ]).per(10)
 
     # @facturas = Factura.all
 
@@ -91,7 +91,7 @@ class FacturasController < ApplicationController
   def imprimir
      require 'prawn'
      @factura = Factura.find(params[:id])
-     
+
      Prawn::Document.generate('factura.pdf') do |pdf|
 
        pdf.draw_text "original", :at => [-4,400], :size => 8, :rotate => 90
@@ -164,7 +164,8 @@ class FacturasController < ApplicationController
           pdf.stroke_bounds          
        end
      end 
-         
+    
+     # render :file => filename, :content_type => 'application/rss'
      respond_to do |format|
        format.html { redirect_to(facturas_url) }
        format.xml  { head :ok }
