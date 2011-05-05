@@ -1,0 +1,6 @@
+= semantic_form_for @usuarioempresa do |f|
+	= f.semantic_errors
+	= f.inputs do 
+		= f.input :user_id, :label => true, :as => :select, :collection => User.all.map{|c| [c.email, c.id]}
+		= f.input :empresa_id, :label => true, :as => :select, :collection => Empresa.all.map{|c| [c.detalle, c.id]}
+		= f.buttons

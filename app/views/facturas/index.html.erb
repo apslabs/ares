@@ -2,13 +2,6 @@
 
 <%= render 'filtros' %>
 
-<% content_for(:controls) do %>
-<%= controls do |c|
-         c.item "Nuevo", new_factura_path, :icon => "add"
-         c.item "Exportar PDF", root_path, :icon => "report_go", :method => :delete
-end %>
-<%end%>
-
 <% content_for(:breadcrumbs) do %>
 <%= breadcrumbs do |b|
 	b.item "Principal", root_path

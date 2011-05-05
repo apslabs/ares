@@ -1,0 +1,25 @@
+%h1 Listado de empresas
+
+%table
+  %tr
+    %th Detalle
+    %th Cuit
+    %th Direccion
+    %th Telefono
+    %th
+    %th
+    %th
+
+  - @empresas.each do |empresa|
+    %tr
+      %td= empresa.detalle
+      %td= empresa.cuit
+      %td= empresa.direccion
+      %td= empresa.telefono
+      %td= link_to 'Ver', empresa
+      %td= link_to 'Editar', edit_empresa_path(empresa)
+      %td= link_to 'Borrar', empresa, :confirm => 'Esta Ud. seguro?', :method => :delete
+
+%br
+
+= link_to 'Nueva Empresa', new_empresa_path

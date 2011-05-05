@@ -1,4 +1,8 @@
 Ares::Application.routes.draw do
+  resources :usuarioempresas
+
+  resources :empresas
+
   resources :tasaivas
 
   resources :condicionivas

@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Detalle:
+  = @empresa.detalle
+%p
+  %b Cuit:
+  = @empresa.cuit
+%p
+  %b Direccion:
+  = @empresa.direccion
+%p
+  %b Telefono:
+  = @empresa.telefono
+
+= link_to 'Editar', edit_empresa_path(@empresa)
+\|
+= link_to 'Volver', empresas_path

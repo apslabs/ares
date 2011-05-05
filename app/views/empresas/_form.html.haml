@@ -1,0 +1,10 @@
+= semantic_form_for @empresa do |f|
+	= f.semantic_errors
+	= f.inputs do 
+		= f.input :detalle 
+		= f.input :cuit, :as => :numeric , :input_html => { :size => 11, :style => "text-align:left;" }
+		= f.input :telefono
+		= f.input :direccion
+		= f.input :usuarioempresas
+		= f.buttons
+
