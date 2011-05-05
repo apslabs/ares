@@ -1,4 +1,3 @@
 class Empresa < ActiveRecord::Base
-  has_many :usuarioempresas
-  has_many :users, :through => :usuarioempresas
+  has_and_belongs_to_many :users
 end
