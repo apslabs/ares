@@ -31,5 +31,5 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :empresas
   
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :empresas_users_ids
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :empresas_users_id
 end

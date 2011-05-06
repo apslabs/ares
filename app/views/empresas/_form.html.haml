@@ -5,6 +5,6 @@
 		= f.input :cuit, :as => :numeric , :input_html => { :size => 11, :style => "text-align:left;" }
 		= f.input :telefono
 		= f.input :direccion
-		= f.input :users, :as => :check_boxes
+		= f.input :users, :as => :check_boxes, :label_method => :email
 		= f.buttons
 
