@@ -1,0 +1,20 @@
+%h1 Listado de roles
+
+%table
+  %tr
+    %th Detalle
+    %th
+    %th
+    %th
+
+  - @rols.each do |rol|
+    %tr
+      %td= rol.detalle
+      %td= link_to 'Ver', rol
+      %td= link_to 'Editar', edit_rol_path(rol)
+      %td= link_to 'Borrar', rol, :confirm => 'Esta Ud seguro?', :method => :delete
+
+%br
+
+= link_to 'New Rol', new_rol_path
+= link_to 'Volver', config_path

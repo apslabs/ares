@@ -36,6 +36,7 @@ GEM
       activesupport (~> 3.0.0)
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
+    cancan (1.6.4)
     cocoon (1.0.3)
     compass (0.10.6)
       haml (>= 3.0.4)
@@ -116,6 +117,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   attrtastic
+  cancan
   cocoon
   compass
   devise

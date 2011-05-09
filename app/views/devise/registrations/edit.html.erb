@@ -8,9 +8,10 @@
   <%= f.input :password_confirmation %>
   <%= f.input :current_password %> <i>(necesitamos su contraseña actual para confirmar los cambios)</i><br />
   <%= f.input :empresas, :as => :check_boxes, :label_method => :detalle %>
+  <%= f.input :rol, :as => :select, :label_method => :detalle %>
 <% end %>
 <%= f.buttons %>
 <% end %>
 <h3>Cancelar mi cuenta</h3>
 
-<p>Unhappy? <%= link_to "Cancelar mi cuenta", registration_path(resource_name), :confirm => "Esta ud. seguro?", :method => :delete %>.</p>
+<p>No esta feliz? <%= link_to "Cancelar mi cuenta", registration_path(resource_name), :confirm => "Esta ud. seguro?", :method => :delete %>.</p>

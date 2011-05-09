@@ -1,0 +1,13 @@
+= form_for @rol do |f|
+  -if @rol.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@rol.errors.count, "error")} prohibited this rol from being saved:"
+      %ul
+        - @rol.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :detalle
+    = f.text_field :detalle
+  .actions
+    = f.submit 'Save'

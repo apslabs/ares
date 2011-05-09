@@ -17,6 +17,7 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'meta_search'
 gem 'prawn'
+gem 'cancan'
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -1,4 +1,6 @@
 Ares::Application.routes.draw do
+  resources :rols
+
   resources :usuarioempresas
 
   resources :empresas
@@ -11,6 +13,7 @@ Ares::Application.routes.draw do
   match '/about',   :to => 'pages#about'
   match '/help',    :to => 'pages#help'
   match '/'    ,    :to => 'pages#home'
+  match '/config', :to => 'pages#config'
   
   get "pages/home"
 
@@ -19,6 +22,8 @@ Ares::Application.routes.draw do
   get "pages/about"
 
   get "pages/help"
+  
+  get "pages/config"
 
   resources :facturanotacreditos
 

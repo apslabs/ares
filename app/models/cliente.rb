@@ -37,6 +37,9 @@ class Cliente < ActiveRecord::Base
   # control para 
   before_destroy :control_sin_comprobantes
   
+  # funcionalidad: accesible_by(current_ability)) 
+  # 1) rails g cancan:ability
+  
   def control_sin_comprobantes
      #  raise "no puede borrar si posees comprobantes cargados" unless facturas.any? || recibos.any? || notacreditos.any
 
