@@ -45,5 +45,9 @@ class Factura < ActiveRecord::Base
 
   def count_items
     facturadetalles.count
+  end
+  
+  def isprinted?
+    isprinted
   end  
 end

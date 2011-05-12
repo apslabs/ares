@@ -30,8 +30,13 @@ end %>
     <td><%= factura.fechavto %></td>
     <td><%= factura.count_items %></td>
     <td><%= link_to icon('application_go', :small, :title => 'ver'), factura %></td>
+<% if factura.isprinted? %>
+	<td></td>
+	<td></td>
+<% else %>
     <td><%= link_to icon('application_edit', :small, :title => 'editar'), edit_factura_path(factura) %></td>
     <td><%= link_to icon('application_delete', :small, :title => 'borrar'), factura, :confirm => 'Esta ud. seguro?', :method => :delete %></td>
+<% end %>
     <td><%= link_to icon('printer', :small, :title => 'Imprimir'), print_factura_path( factura ) %></td>
   </tr>
 <% end %>

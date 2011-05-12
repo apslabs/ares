@@ -80,7 +80,7 @@ class FacturasController < ApplicationController
   # DELETE /facturas/1.xml
   def destroy
     @factura = Factura.find(params[:id])
-    @factura.destroy
+    @factura.destroy unless @factura.isprinted?
 
     respond_to do |format|
       format.html { redirect_to(facturas_url) }
@@ -163,12 +163,18 @@ class FacturasController < ApplicationController
        pdf.bounding_box [-2, 40], :width => 500, :height => 20 do
           pdf.stroke_bounds          
        end
-     end 
-    
-     # render :file => filename, :content_type => 'application/rss'
-     respond_to do |format|
-       format.html { redirect_to(facturas_url) }
-       format.xml  { head :ok }
+       
+       @factura.isprinted = true       
      end
+     respond_to do |format|
+       if @factura.update_attributes(params[:factura])
+         format.html { redirect_to(@factura, :notice => 'la Factura fue impresa correctamente.') }
+         format.xml  { head :ok }
+       else
+         format.html { render :action => "edit" }
+         format.xml  { render :xml => @factura.errors, :status => :unprocessable_entity }
+       end
+     end
+     
    end
 end

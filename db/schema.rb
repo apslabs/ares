@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110512124317) do
+ActiveRecord::Schema.define(:version => 20110512193802) do
 
   create_table "clientes", :force => true do |t|
     t.string   "codigo"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(:version => 20110512124317) do
     t.date     "fechavto"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "isprinted"
   end
 
   create_table "notacreditos", :force => true do |t|

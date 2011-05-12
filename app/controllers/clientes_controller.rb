@@ -90,7 +90,7 @@ class ClientesController < ApplicationController
 protected 
 # filtro general protejido
   def filter_customer
-    @cliente = current_company.cliente.find(params[:id])    
+    @cliente = current_company.clientes.find(params[:id])    
   end
 
 end
