@@ -30,7 +30,7 @@ class Ability
     end
        
     can [:edit, :update, :read], Empresa do |empresa|      
-      empresa.users.include? user      
+      empresa.user_ids.include? user.id      
     end
     
   end

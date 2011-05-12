@@ -35,8 +35,8 @@
           = content_for?(:user_navigation) ? yield(:user_navigation) : render('shared/user_navigation')
         %h1{:style => 'margin-left:100px;height:70px;'}
           Ares
-          = render('shared/change_current_company')
-        = content_for?(:main_navigation) ? yield(:main_navigation) : render('shared/main_navigation')
+          = render('shared/change_current_company') if user_signed_in?
+        = content_for?(:main_navigation) ? yield(:main_navigation) : render('shared/main_navigation') if user_signed_in?
       #wrapper.wat-cf
         %div{:id => content_for?(:sidebar) ? 'main':'full-main'}
           .flash
