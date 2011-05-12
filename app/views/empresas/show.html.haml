@@ -13,6 +13,6 @@
   %b Telefono:
   = @empresa.telefono
 
-= link_to 'Editar', edit_empresa_path(@empresa)
+= link_to 'Editar', edit_empresa_path(@empresa) if can? :edit, @empresa
 \|
 = link_to 'Volver', empresas_path

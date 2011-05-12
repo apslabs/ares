@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110427202648
+# Schema version: 20110512124317
 #
 # Table name: clientes
 #
@@ -13,6 +13,7 @@
 #  created_at      :datetime
 #  updated_at      :datetime
 #  condicioniva_id :integer
+#  empresa_id      :integer
 #
 
 class Cliente < ActiveRecord::Base
@@ -20,6 +21,7 @@ class Cliente < ActiveRecord::Base
   has_many :recibos
   has_many :notacreditos
   belongs_to :condicioniva
+  belongs_to :empresa
 
   validates :cuit, :presence => true, :length => { :maximum => 11 }, :uniqueness => true
   validates :razonsocial, :presence => true
@@ -32,7 +34,9 @@ class Cliente < ActiveRecord::Base
 
   scope :sin_telefono, where("clientes.telefono = '' ")
   scope :no_actualizados, where("updated_at IS NULL" )
-  scope :orden_alfabetico, order("clientes.razonsocial")
+  scope :orden_alfabetico, order("clientes.razonsocial")  
+  scope :del_usuario, lambda {|current_user| where(:empresa_id => current_user.empresas) }
+  
   
   # control para 
   before_destroy :control_sin_comprobantes

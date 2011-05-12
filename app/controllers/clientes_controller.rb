@@ -1,10 +1,10 @@
 class ClientesController < ApplicationController
   # GET /clientes
   # GET /clientes.xml
-  before_filter :authenticate_user!
+  before_filter :filter_customer, :only => [:show,:edit,:update,:destroy]
   
   def index
-    @search = Cliente.search(params[:search])
+    @search = current_company.clientes.search(params[:search])
     @clientes = @search.order("razonsocial").page(params[ :page ]).per(10)
 
 #    @clientes = Cliente.order("razonsocial").page(params[ :page ]).per(5)
@@ -18,7 +18,6 @@ class ClientesController < ApplicationController
   # GET /clientes/1
   # GET /clientes/1.xml
   def show
-    @cliente = Cliente.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -29,8 +28,12 @@ class ClientesController < ApplicationController
   # GET /clientes/new
   # GET /clientes/new.xml
   def new
-    @cliente = Cliente.new
+#    @cliente = Cliente.new
+#    @cliente.empresa_id = current_company.id
+# esto reemplaza las dos lineas anteriores
 
+    @cliente = current_company.clientes.build
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @cliente }
@@ -39,13 +42,14 @@ class ClientesController < ApplicationController
 
   # GET /clientes/1/edit
   def edit
-    @cliente = Cliente.find(params[:id])
   end
 
   # POST /clientes
   # POST /clientes.xml
   def create
-    @cliente = Cliente.new(params[:cliente])
+    #@cliente = Cliente.new(params[:cliente])
+
+    @cliente = current_company.clientes.build(params[:cliente])
 
     respond_to do |format|
       if @cliente.save
@@ -61,8 +65,6 @@ class ClientesController < ApplicationController
   # PUT /clientes/1
   # PUT /clientes/1.xml
   def update
-    @cliente = Cliente.find(params[:id])
-
     respond_to do |format|
       if @cliente.update_attributes(params[:cliente])
         format.html { redirect_to(@cliente, :notice => 'Cliente was successfully updated.') }
@@ -77,7 +79,6 @@ class ClientesController < ApplicationController
   # DELETE /clientes/1
   # DELETE /clientes/1.xml
   def destroy
-    @cliente = Cliente.find(params[:id])
     @cliente.destroy
 
     respond_to do |format|
@@ -85,4 +86,13 @@ class ClientesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+protected 
+# filtro general protejido
+  def filter_customer
+    @cliente = current_company.cliente.find(params[:id])    
+  end
+
 end
+
+

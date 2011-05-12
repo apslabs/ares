@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110427202648
+# Schema version: 20110512124317
 #
 # Table name: condicionivas
 #
@@ -7,6 +7,7 @@
 #  detalle    :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  letra      :string(255)
 #
 
 require 'test_helper'

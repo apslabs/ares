@@ -1,3 +1,6 @@
-= raw " &raquo; #{current_company.name.titlecase}" if has_current_company?
-= link_to(icon('application_edit', :small, :title => 'Administración de Companías'), companies_path, :style => 'float:right;')
+= raw " &raquo; #{current_company.detalle.titlecase}" 
+= link_to(icon('application_edit', :small, :title => 'Administración de Companías'), empresas_path, :style => 'float:right;')
+- if current_user.empresas.many?
+  %div{:style => 'float:right;margin-top:11px;'}
+    = collection_select(:empresa, :default_company, current_user.empresas, :id, :detalle, { :include_blank => '-- Cambiar de Companía --'}, :onchange => 'location.href="?cc="+$(this).val();')
 

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110427202648
+# Schema version: 20110512124317
 #
 # Table name: clientes
 #
@@ -13,6 +13,7 @@
 #  created_at      :datetime
 #  updated_at      :datetime
 #  condicioniva_id :integer
+#  empresa_id      :integer
 #
 
 require 'test_helper'

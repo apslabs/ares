@@ -23,6 +23,15 @@ class Ability
     #
     #   can :update, Article, :published => true
     #
-    # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
+    # See the wiki for details: h
+
+    can :manage, Empresa do |empresa|
+      user.rol.detalle == 'administrador'
+    end
+       
+    can [:edit, :update, :read], Empresa do |empresa|      
+      empresa.users.include? user      
+    end
+    
   end
 end
