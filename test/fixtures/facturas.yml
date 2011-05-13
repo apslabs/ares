@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110427202648
+# Schema version: 20110513124515
 #
 # Table name: facturas
 #
@@ -10,6 +10,7 @@
 #  fechavto   :date
 #  created_at :datetime
 #  updated_at :datetime
+#  isprinted  :boolean
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html

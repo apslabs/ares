@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110512124317
+# Schema version: 20110513125147
 #
 # Table name: users
 #
@@ -16,6 +16,7 @@
 #  created_at           :datetime
 #  updated_at           :datetime
 #  rol_id               :integer
+#  empresa_id           :integer
 #
 # Indexes
 #
@@ -32,16 +33,14 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :empresas
   has_many :clientes, :through => :empresas, :source => :empresas_users
   belongs_to :rol
+  belongs_to :empresa
+  
 #  has_one :current_company, :class_name => "Empresa", :conditions => {:default_company => true}, :through => :empresas
 # todo : leer AR.rubyonrails.org
   
   def set_current_company(company_id)
-     Empresa.transaction do
-       current_company.toggle!(:default_company) unless current_company.nil?
-       empresas.find(company_id).toggle!(:default_company)
-     end
-     reload
-   end
+     update_attribute(:empresa_id,company_id)     #transaccional e integrado
+  end
 
   # Setup accessible (or protected) attributes for your model
   #attr_accessible :email, :password, :password_confirmation, :remember_me, :empresas_users_attributes
@@ -51,8 +50,6 @@ class User < ActiveRecord::Base
 #     @role[rol_id]
 #  end
 
-def current_company
-  empresas.where(:default_company => true).first
-end
+  alias_method :current_company, :empresa  # alias para el nombre del metodo
 
 end

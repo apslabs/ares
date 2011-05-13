@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110512124317
+# Schema version: 20110513125147
 #
 # Table name: users
 #
@@ -16,6 +16,7 @@
 #  created_at           :datetime
 #  updated_at           :datetime
 #  rol_id               :integer
+#  empresa_id           :integer
 #
 # Indexes
 #

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110512124317
+# Schema version: 20110513124515
 #
 # Table name: empresas
 #
@@ -11,9 +11,13 @@
 #  created_at      :datetime
 #  updated_at      :datetime
 #  default_company :boolean
-# TODO validate CUIT nombre 
+#
 
 class Empresa < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_many :clientes
+  
+  validate :cuit, :presence => true, :uniqueness => true
+  validate :detalle, :presence => true
+  
 end
