@@ -1,8 +1,6 @@
 Ares::Application.routes.draw do
   resources :rols
 
-  resources :usuarioempresas
-
   resources :empresas
 
   resources :tasaivas
@@ -38,7 +36,9 @@ Ares::Application.routes.draw do
   devise_for :users
 
   resources :clientes do 
-    resources :facturas, :only => [:new, :create]
+    resources :facturas
+    resources :recibos
+    resources :notacreditos
   end  
     
   resources :facturas do

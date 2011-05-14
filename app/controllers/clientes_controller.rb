@@ -7,8 +7,6 @@ class ClientesController < ApplicationController
     @search = current_company.clientes.search(params[:search])
     @clientes = @search.order("razonsocial").page(params[ :page ]).per(10)
 
-#    @clientes = Cliente.order("razonsocial").page(params[ :page ]).per(5)
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @clientes }
@@ -18,7 +16,6 @@ class ClientesController < ApplicationController
   # GET /clientes/1
   # GET /clientes/1.xml
   def show
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @cliente }

@@ -1,8 +1,8 @@
 <% content_for(:secondary_navigation) do %>
 <%= secondary_navigation do |nav|
-    nav.item "Facturas", facturas_path, :active => true
-    nav.item "Recibos", recibos_path
-    nav.item "Notas de credito", notacreditos_path
+    nav.item "Facturas", cliente_facturas_path(@cliente), :active => true
+    nav.item "Recibos", cliente_recibos_path(@cliente)
+    nav.item "Notas de credito", cliente_notacreditos_path(@cliente)
 end%>
 <% end %>
 

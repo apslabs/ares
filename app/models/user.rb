@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
   belongs_to :empresa
   
 #  has_one :current_company, :class_name => "Empresa", :conditions => {:default_company => true}, :through => :empresas
-# todo : leer AR.rubyonrails.org
+# TODO : leer AR.rubyonrails.org
   
   def set_current_company(company_id)
      update_attribute(:empresa_id,company_id)     #transaccional e integrado

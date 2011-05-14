@@ -1,13 +1,10 @@
 class FacturasController < ApplicationController
   # GET /facturas
   # GET /facturas.xml
-  before_filter :authenticate_user!
   
   def index
     @search = Factura.search(params[:search])
     @facturas = @search.page(params[ :page ]).per(10)
-
-    # @facturas = Factura.all
 
     respond_to do |format|
       format.html # index.html.erb

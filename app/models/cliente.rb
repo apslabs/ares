@@ -23,9 +23,11 @@ class Cliente < ActiveRecord::Base
   belongs_to :condicioniva
   belongs_to :empresa
 
-  validates :cuit, :presence => true, :length => { :maximum => 11 }, :uniqueness => true
+  validates :cuit, :presence => true, :length => { :maximum => 11 }
   validates :razonsocial, :presence => true
-  validates :codigo, :presence => true, :uniqueness => true
+  validates :codigo, :presence => true
+  validates_uniqueness_of :codigo, :scope => [:empresa_id]
+  validates_uniqueness_of :cuit, :scope => [:empresa_id]
 
   validates_numericality_of :cuit, :only_integer => true, :message => "solo numeros"
   # validates_inclusion_of :cuit, :in => 20000000000..38000000000, :message => "solo puede ingresar numeros entre 20 y 38."
