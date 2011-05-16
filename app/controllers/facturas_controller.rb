@@ -153,8 +153,8 @@ class FacturasController < ApplicationController
           pdf.stroke_bounds          
        end
        
-       pdf.draw_text @factura.totalivafactura.to_s, :at => [350,25], :size => 12, :style => :bold
-       pdf.draw_text @factura.totalfactura.to_s, :at => [400,25], :size => 12, :style => :bold
+       pdf.draw_text @factura.total_iva_factura.to_s, :at => [350,25], :size => 12, :style => :bold
+       pdf.draw_text @factura.total_factura.to_s, :at => [400,25], :size => 12, :style => :bold
 
        pdf.line_width = 1
        pdf.bounding_box [-2, 40], :width => 500, :height => 20 do

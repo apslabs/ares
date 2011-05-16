@@ -12,13 +12,15 @@
 #  updated_at :datetime
 #
 
-class Recibo < ActiveRecord::Base
-  belongs_to :cliente
-  has_many :facturarecibo
+class Recibo < Comprobante
+  has_many :facturarecibos
   
-  validates :fecha, :presence => true
-  validates :numero, :presence => true, :length => { :maximum => 10 }, :uniqueness => true, :numericality => true
-  validates :importe, :presence => true, :numericality => true
+  def total_recibo
+    self.importe
+  end
   
-  scope :por_cliente, lambda {|cliente| where(:cliente_id => cliente) }
+  def total_comprobante
+    (self.importe * -1)
+  end
+    
 end

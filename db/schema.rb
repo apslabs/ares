@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110513125147) do
+ActiveRecord::Schema.define(:version => 20110516183603) do
 
   create_table "clientes", :force => true do |t|
     t.string   "codigo"
@@ -25,11 +25,34 @@ ActiveRecord::Schema.define(:version => 20110513125147) do
     t.integer  "empresa_id"
   end
 
+  create_table "comprobantes", :force => true do |t|
+    t.integer  "cliente_id"
+    t.string   "type"
+    t.date     "fecha"
+    t.decimal  "importe"
+    t.integer  "numero"
+    t.date     "fechavto"
+    t.date     "printed_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "condicionivas", :force => true do |t|
     t.string   "detalle"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "letra"
+  end
+
+  create_table "detalles", :force => true do |t|
+    t.integer  "detallable_id"
+    t.string   "detallable_type"
+    t.string   "descripcion"
+    t.decimal  "cantidad"
+    t.decimal  "preciounitario"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "tasaiva"
   end
 
   create_table "empresas", :force => true do |t|

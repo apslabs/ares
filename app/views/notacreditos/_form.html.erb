@@ -1,22 +1,32 @@
+<% content_for(:head) do %>
+  <%= javascript_tag do %>
+    function calcula_total(input){
+      var total = parseFloat($($(input).closest('tr').find('input.para_calcula')[0]).val()) * 	parseFloat($($(input).closest('tr').find('input.para_calcula')[1]).val()) * 
+(1 + (parseFloat($($(input).closest('tr').find('input.para_calcula')[2]).val())/100));
+
+      $($(input).closest('tr').find('.calcula_total')[0]).html(total.toFixed(2));
+    }
+  <% end %>
+<% end %>
+
 <%= semantic_form_for @notacredito do |f| %>
-<% if @notacredito.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@notacredito.errors.count, "error") %> prohibited this nota de credito from being saved:</h2>
+ <%= f.semantic_errors %>
 
-    <ul>
-    <% @notacredito.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+ <%= f.inputs do %>
+   <%= f.input :fecha %>
+   <%= f.input :cliente, :label => true, :as => :select, :collection => Cliente.all.map{|c| [c.razonsocial, c.id]} %>
+   <%= f.input :numero %>
+ <% end %>
 
+<div class="links">
+	<%= link_to_add_association 'agrega detalle', f, :detalles,'data-association-insertion-position' => :after %>
+</div>
 
-<%= f.inputs do %>
-  <%= f.input :fecha %>
-  <%= f.input :cliente, :label => true, :as => :select, :collection => Cliente.all.map{|c| [c.razonsocial, c.id]} %>
-  <%= f.input :importe %>
-  <%= f.input :numero %>
-<% end %>
-<%= f.buttons %>
+<div class='detalles'>
+	<%= f.semantic_fields_for :detalles do |fd|%>    
+    	<%= render 'detalle_fields', :f => fd %> 
+	<% end %>
+</div>
+
+ <%= f.buttons %>
 <% end %>

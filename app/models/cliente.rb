@@ -20,6 +20,15 @@ class Cliente < ActiveRecord::Base
   has_many :facturas
   has_many :recibos
   has_many :notacreditos
+  has_many :comprobantes do 
+    def saldo
+      fc = where("Type = 'Factura'").sum(:importe)
+      nc = where("Type = 'Notacredito'").sum(:importe)
+      rc = where("Type = 'Recibo'").sum(:importe)
+      fc - nc - rc
+    end
+  end
+   
   belongs_to :condicioniva
   belongs_to :empresa
 
@@ -39,6 +48,8 @@ class Cliente < ActiveRecord::Base
   scope :orden_alfabetico, order("clientes.razonsocial")  
   scope :del_usuario, lambda {|current_user| where(:empresa_id => current_user.empresas) }
   
+  delegate :saldo , :to => :comprobantes
+  
   # control para 
   before_destroy :control_sin_comprobantes
   
@@ -46,14 +57,11 @@ class Cliente < ActiveRecord::Base
   # 1) rails g cancan:ability
   
   def control_sin_comprobantes
-     #  raise "no puede borrar si posees comprobantes cargados" unless facturas.any? || recibos.any? || notacreditos.any
 
-   if [facturas,recibos,notacreditos].any? {|cpbte| cpbte.any? }
+   if [comprobantes].any? {|cpbte| cpbte.any? }
      self.errors[:base] = "error que queres hacer?"
      return false
-     #raise "estamos en el horno"
-   end
-   
-    # raise "no puede borrar si posees comprobantes cargados" if [facturas,recibos,notacreditos].any? {|cpbte| cpbte.any? }
+   end   
   end
+  
 end

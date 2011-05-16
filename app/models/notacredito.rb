@@ -12,14 +12,14 @@
 #  updated_at :datetime
 #
 
-class Notacredito < ActiveRecord::Base
-  belongs_to :cliente
-  has_many :facturanotacredito
+class Notacredito < Comprobante
+  has_many :facturanotacreditos
+    
+  def total_notacredito
+    self.importe
+  end
   
-  validates :fecha, :presence => true
-  validates :numero, :presence => true, :length => { :maximum => 10 }, :uniqueness => true, :numericality => true
-  validates :importe, :presence => true, :numericality => true
-
-  scope :no_actualizados, where("updated_at IS NULL" )
-  scope :por_cliente, lambda {|cliente| where(:cliente_id => cliente) }
+  def total_comprobante
+    (self.importe * -1)
+  end
 end

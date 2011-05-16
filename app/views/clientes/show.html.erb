@@ -40,11 +40,11 @@ end %>
   <tr>
     <td><%= cpbte.numero %></td>
     <td><%= cpbte.fecha %></td>
-    <td><%= cpbte.totalfactura %></td>
+    <td><%= cpbte.total_factura %></td>
     <td><%= cpbte.fechavto %></td>
   </tr>
 
-	<% cpbte.facturarecibo.each do |cpbteafectado| %>
+	<% cpbte.facturarecibos.each do |cpbteafectado| %>
   		<tr>
     		<td>recibo -------></td>
     		<td><%= cpbteafectado.fecha %></td>
@@ -54,7 +54,7 @@ end %>
   		</tr>
 	<% end %>
 	
-	<% cpbte.facturanotacredito.each do |cpbteafectado| %>
+	<% cpbte.facturanotacreditos.each do |cpbteafectado| %>
 		<tr>
   		<td>nota credito --></td>
   		<td><%= cpbteafectado.fecha %></td>
@@ -72,17 +72,20 @@ end %>
 </p>
 <table>
  <tr>
-    <th>Numero</th>
-    <th>Fecha</th>
+    <th>Numero - </th>
+    <th>Fecha - </th>
     <th>Importe</th>
   </tr>
+
+<% #raise @cliente.recibos.inspect %>
 <% @cliente.recibos.each do |cpbte| %>
+
   <tr>
     <td><%= cpbte.numero %></td>
     <td><%= cpbte.fecha %></td>
     <td><%= cpbte.importe %></td>
   </tr>
-	<% cpbte.facturarecibo.each do |cpbteafectado| %>
+	<% cpbte.facturarecibos.each do |cpbteafectado| %>
 		<tr>
   		<td>factura -------></td>
   		<td><%= cpbteafectado.fecha %></td>
@@ -110,7 +113,7 @@ end %>
     <td><%= cpbte.fecha %></td>
     <td><%= cpbte.importe %></td>
   </tr>
-	<% cpbte.facturanotacredito.each do |cpbteafectado| %>
+	<% cpbte.facturanotacreditos.each do |cpbteafectado| %>
 		<tr>
 		<td>factura -------></td>
 		<td><%= cpbteafectado.fecha %></td>

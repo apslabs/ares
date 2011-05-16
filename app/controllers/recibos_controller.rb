@@ -1,10 +1,10 @@
 class RecibosController < ApplicationController
   # GET /recibos
   # GET /recibos.xml
-  before_filter :authenticate_user!
   
   def index
-    @recibos = Recibo.all
+    @search = Recibo.search(params[:search])
+    @recibos = @search.page(params[ :page ]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb
