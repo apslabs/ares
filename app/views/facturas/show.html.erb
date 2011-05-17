@@ -3,7 +3,7 @@
 
   	<%= attr.attribute :fecha %>
   	<%= attr.attribute :numero , :label => "Numero de factura"%>
-  	<%= attr.attribute :total_factura, :label => "Total de factura" %>
+  	<%= attr.attribute :total, :label => "Total de factura" %>
   	<%= attr.attribute :fechavto %>
 
 	<%= attr.attributes :for => :cliente do |cliente| %>
@@ -42,7 +42,7 @@
   <td align="right"></td>
   <td align="right"></td>
   <td align="right"></td>
-  <td align="right"><%= number_to_currency(@factura.total_factura) %></td>
+  <td align="right"><%= number_to_currency(@factura.total) %></td>
 </tr>
 </table>
 </br>

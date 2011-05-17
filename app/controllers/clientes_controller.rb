@@ -1,7 +1,7 @@
 class ClientesController < ApplicationController
   # GET /clientes
   # GET /clientes.xml
-  before_filter :filter_customer, :only => [:show,:edit,:update,:destroy]
+  before_filter :filter_customer, :only => [:show,:edit,:update,:destroy,:cuentacorriente]
   
   def index
     @search = current_company.clientes.search(params[:search])
@@ -83,6 +83,17 @@ class ClientesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+
+def cuentacorriente
+  @cuentacorriente = @cliente.comprobantes.order("fecha")
+  
+  respond_to do |format|
+    format.html # show.html.erb
+    format.xml  { render :xml => @cliente }
+  end
+end
+
 
 protected 
 # filtro general protejido

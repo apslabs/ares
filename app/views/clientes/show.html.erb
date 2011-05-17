@@ -3,6 +3,7 @@
     nav.item "Facturas", cliente_facturas_path(@cliente), :active => true
     nav.item "Recibos", cliente_recibos_path(@cliente)
     nav.item "Notas de credito", cliente_notacreditos_path(@cliente)
+	nav.item "Cuenta corriente", cuentacorriente_cliente_path(@cliente)
 end%>
 <% end %>
 
@@ -40,7 +41,7 @@ end %>
   <tr>
     <td><%= cpbte.numero %></td>
     <td><%= cpbte.fecha %></td>
-    <td><%= cpbte.total_factura %></td>
+    <td><%= cpbte.importe %></td>
     <td><%= cpbte.fechavto %></td>
   </tr>
 

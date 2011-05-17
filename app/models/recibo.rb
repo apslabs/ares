@@ -22,5 +22,9 @@ class Recibo < Comprobante
   def total_comprobante
     (self.importe * -1)
   end
-    
+  
+protected
+  #def calculo_total_comprobante
+  #  self.importe =  8888
+  #end   
 end
