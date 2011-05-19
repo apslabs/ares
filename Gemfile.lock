@@ -110,6 +110,7 @@ GEM
     warden (1.0.3)
       rack (>= 1.0.0)
     web-app-theme (0.6.3)
+    wicked_pdf (0.7.0)
 
 PLATFORMS
   ruby
@@ -131,3 +132,4 @@ DEPENDENCIES
   sqlite3
   sqlite3-ruby
   web-app-theme (>= 0.6.2)
+  wicked_pdf

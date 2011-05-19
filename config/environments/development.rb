@@ -38,5 +38,9 @@ Ares::Application.configure do
   		:authentication       => 'plain',
   		:enable_starttls_auto => true  }
   
+      config.after_initialize do
+        WICKED_PDF[:exe_path] = '/usr/bin/wkhtmltopdf'
+      end
+
 end
 

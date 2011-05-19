@@ -24,7 +24,13 @@ user2 = User.create!(:email => "luis@ap-sys.com.ar", :rol_id => 1, :password => 
 user1.empresas.create!(:detalle => "empresa sa", :cuit => "30123456780",:direccion => "helguera 1234", :telefono => "44445555", :default_company => true)
 user2.empresas.create!(:detalle => "empresa prueba", :cuit => "30876543210",:direccion => "xxxxx 1234", :telefono => "no tiene", :default_company => false)
 
-Cliente.create!(:codigo => "1",:razonsocial => "cliente 1", :cuit => "30646483561", :telefono => "44445555",:condicioniva_id => 1,:empresa_id => 1)
-Cliente.create!(:codigo => "2",:razonsocial => "cliente 2", :cuit => "30646483562", :telefono => "55556666",:condicioniva_id => 2,:empresa_id => 1)
-Cliente.create!(:codigo => "3",:razonsocial => "cliente 3", :cuit => "30646483563", :telefono => "66667777",:condicioniva_id => 3,:empresa_id => 2)
+#Cliente.create!(:codigo => "1",:razonsocial => "cliente 1", :cuit => "30646483561", :telefono => "44445555",:condicioniva_id => 1,:empresa_id => 1)
+#Cliente.create!(:codigo => "2",:razonsocial => "cliente 2", :cuit => "30646483562", :telefono => "55556666",:condicioniva_id => 2,:empresa_id => 1)
+#Cliente.create!(:codigo => "3",:razonsocial => "cliente 3", :cuit => "30646483563", :telefono => "66667777",:condicioniva_id => 3,:empresa_id => 2)
 
+(1..100).each {|i| Cliente.create!(:codigo => i.to_s,
+  :razonsocial => "Cliente " + i.to_s,
+  :cuit => (30646480000 + i).to_s,
+  :telefono => (4000000 + i).to_s,
+  :condicioniva_id => 1,
+  :empresa_id => 1 )}

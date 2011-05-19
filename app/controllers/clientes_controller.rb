@@ -19,6 +19,14 @@ class ClientesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @cliente }
+      format.pdf { render :pdf => "cta"+@cliente.razonsocial,
+                       :template => 'clientes/show.html.erb',
+                       :show_as_html => params[:debug].present?,      # allow debuging based on url param
+                       :layout => 'pdf.html.erb',
+                       :footer => {
+                          :right => "Reporte generado el #{l DateTime.current}"
+                       }
+                 }
     end
   end
 
@@ -89,11 +97,18 @@ def cuentacorriente
   @cuentacorriente = @cliente.comprobantes.order("fecha")
   
   respond_to do |format|
-    format.html # show.html.erb
+    format.html # .html.erb
     format.xml  { render :xml => @cliente }
+    format.pdf { render :pdf => "cc_#{@cliente.id}",
+                     :template => 'clientes/cuentacorriente.html.erb',
+                     :show_as_html => params[:debug].present?,      # allow debuging based on url param
+                     :layout => 'pdf.html.erb',
+                     :footer => {
+                        :right => "Reporte generado el #{l DateTime.current}"
+                     }
+               }
   end
 end
-
 
 protected 
 # filtro general protejido
