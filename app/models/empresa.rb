@@ -13,11 +13,14 @@
 #  default_company :boolean
 #
 
-class Empresa < ActiveRecord::Base
-  has_and_belongs_to_many :users
-  has_many :clientes
+class Empresa < ActiveResource::Base
+  #has_and_belongs_to_many :users
+  #has_many :clientes
   
-  validate :cuit, :presence => true, :uniqueness => true
-  validate :detalle, :presence => true
+  #self.site = CUSTOM_PROVIDER_URL 
+  #self.element_name = "company"
+    
+  #validate :cuit, :presence => true, :uniqueness => true
+  #validate :detalle, :presence => true
   
 end

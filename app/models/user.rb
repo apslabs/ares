@@ -1,55 +1,60 @@
 # == Schema Information
-# Schema version: 20110513125147
+# Schema version: 20101007212537
 #
 # Table name: users
 #
-#  id                   :integer         not null, primary key
-#  email                :string(255)     default(""), not null
-#  encrypted_password   :string(128)     default(""), not null
-#  reset_password_token :string(255)
-#  remember_created_at  :datetime
-#  sign_in_count        :integer         default(0)
-#  current_sign_in_at   :datetime
-#  last_sign_in_at      :datetime
-#  current_sign_in_ip   :string(255)
-#  last_sign_in_ip      :string(255)
-#  created_at           :datetime
-#  updated_at           :datetime
-#  rol_id               :integer
-#  empresa_id           :integer
+#  id          :integer         not null, primary key
+#  uid         :string(255)
+#  first_name  :string(255)
+#  last_name   :string(255)
+#  memberships :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
 #
-# Indexes
-#
-#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
-#  index_users_on_email                 (email) UNIQUE
-#
+require 'ostruct'
 
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-         
-  has_and_belongs_to_many :empresas
-  has_many :clientes, :through => :empresas, :source => :empresas_users
-  belongs_to :rol
-  belongs_to :empresa
-  
-#  has_one :current_company, :class_name => "Empresa", :conditions => {:default_company => true}, :through => :empresas
-# TODO : leer AR.rubyonrails.org
-  
-  def set_current_company(company_id)
-     update_attribute(:empresa_id,company_id)     #transaccional e integrado
+  serialize :memberships
+
+  attr_reader :current_membership
+  attr_reader :companies
+  attr_reader :current_company
+  attr_reader :role
+  attr_reader :clients
+
+  def companies
+    @companies ||= memberships.map{|membership| OpenStruct.new(membership)}
   end
 
-  # Setup accessible (or protected) attributes for your model
-  #attr_accessible :email, :password, :password_confirmation, :remember_me, :empresas_users_attributes
+  def current_company
+    @current_company ||= (companies.detect(&:current) || companies.first)
+  end
 
-#  def rol
-#     @role = Rol.all()
-#     @role[rol_id]
-#  end
+  def role
+    @role ||= current_company.try(:role).try(:to_sym)
+  end
 
-  alias_method :current_company, :empresa  # alias para el nombre del metodo
+  def clients
+    @clients ||= current_company.try(:clients).map(&:to_sym)
+  end
 
+  def has_client?(client)
+    clients.include?(client.to_sym)
+  end
+
+  def is_role?(role)
+    self.role == role.to_sym
+  end
+
+  def method_missing(method, *args, &block)
+    case method
+      when /^has_([a-z]+)\?$/
+        return has_client?($1)
+      when /^is_([a-z]+)\?$/
+        return is_role?($1)
+      else
+        super
+    end
+  end
 end
+

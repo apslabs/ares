@@ -30,7 +30,7 @@ class Cliente < ActiveRecord::Base
   end
    
   belongs_to :condicioniva
-  belongs_to :empresa
+  #belongs_to :empresa
 
   validates :cuit, :presence => true, :length => { :maximum => 11 }
   validates :razonsocial, :presence => true
@@ -46,7 +46,7 @@ class Cliente < ActiveRecord::Base
   scope :sin_telefono, where("clientes.telefono = '' ")
   scope :no_actualizados, where("updated_at IS NULL" )
   scope :orden_alfabetico, order("clientes.razonsocial")  
-  scope :del_usuario, lambda {|current_user| where(:empresa_id => current_user.empresas) }
+  scope :by_company, lambda {|company| where(:empresa_id => company.id) }
   
   delegate :saldo , :to => :comprobantes
   

@@ -6,7 +6,9 @@ class EmpresasController < ApplicationController
   # GET /empresas
   # GET /empresas.xml
   def index
-    @empresas = current_user.empresas
+ #   @empresas = current_user.empresas
+    @empresas = companies
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @empresas }

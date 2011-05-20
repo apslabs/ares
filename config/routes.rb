@@ -1,5 +1,5 @@
 Ares::Application.routes.draw do
-  resources :rols
+  #resources :rols
 
   resources :empresas
 
@@ -33,7 +33,7 @@ Ares::Application.routes.draw do
 
   resources :facturas
 
-  devise_for :users
+  #devise_for :users
 
   resources :clientes do 
     resources :facturas
@@ -41,6 +41,7 @@ Ares::Application.routes.draw do
     resources :notacreditos
     member do
       get 'cuentacorriente', :action => :cuentacorriente 
+      get 'list_accounts', :action => :list_accounts
     end
   end  
     
@@ -54,7 +55,12 @@ Ares::Application.routes.draw do
     end
   end
   
-  resources :facturadetalles
+  # omniauth
+  match '/auth/:provider/callback', :to => 'user_sessions#create'
+  match '/auth/failure', :to => 'user_sessions#failure'
+
+  # Custom logout
+  match '/logout', :to => 'user_sessions#destroy', :as => :destroy_user_session
 
   #resources :asientos do
   #  post 'print'

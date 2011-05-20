@@ -4,7 +4,9 @@ class ClientesController < ApplicationController
   before_filter :filter_customer, :only => [:show,:edit,:update,:destroy,:cuentacorriente]
   
   def index
-    @search = current_company.clientes.search(params[:search])
+#    @search = current_company.clientes.search(params[:search])
+
+    @search = Cliente.by_company(current_company).search(params[:search])
     @clientes = @search.order("razonsocial").page(params[ :page ]).per(10)
 
     respond_to do |format|
@@ -37,7 +39,7 @@ class ClientesController < ApplicationController
 #    @cliente.empresa_id = current_company.id
 # esto reemplaza las dos lineas anteriores
 
-    @cliente = current_company.clientes.build
+    @cliente = Cliente.new
     
     respond_to do |format|
       format.html # new.html.erb
@@ -53,8 +55,8 @@ class ClientesController < ApplicationController
   # POST /clientes.xml
   def create
     #@cliente = Cliente.new(params[:cliente])
-
-    @cliente = current_company.clientes.build(params[:cliente])
+     
+    @cliente = Cliente.new(params[:cliente].update(:empresa_id => current_company.id))
 
     respond_to do |format|
       if @cliente.save
@@ -103,19 +105,39 @@ def cuentacorriente
                      :template => 'clientes/cuentacorriente.html.erb',
                      :show_as_html => params[:debug].present?,      # allow debuging based on url param
                      :layout => 'pdf.html.erb',
-                     :footer => {
-                        :right => "Reporte generado el #{l DateTime.current}"
-                     }
+                     :footer => { :right => "Reporte generado el #{l DateTime.current}" }
                }
+  end
+end
+
+def list_accounts
+  begin
+    @accounts = Account.all()
+
+    respond_to do |format|
+      format.html { redirect_to( clientes_url ) }
+      format.xml  { head :ok }
+    end
+  rescue ActiveResource::ResourceNotFound, ActiveResource::Redirection, ActiveResource::ResourceInvalid
+    redirect_to("404.html")
+  ensure
+    # redirect_to("404.html")
+    # paso siempre por aca
   end
 end
 
 protected 
 # filtro general protejido
   def filter_customer
-    @cliente = current_company.clientes.find(params[:id])    
+    #@cliente = current_company.clientes.find( params[:id] )
+    @cliente = Cliente.by_company(current_company).find( params[:id] )
   end
 
 end
 
+# calendar ==> google calendar 
+# leo parte a fin de mes
+# 7 u 8 lucas => $50 la hora
+# no agregariamos funcionalidad
+# 
 

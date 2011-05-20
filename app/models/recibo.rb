@@ -1,13 +1,16 @@
 # == Schema Information
-# Schema version: 20110427202648
+# Schema version: 20110516183603
 #
-# Table name: recibos
+# Table name: comprobantes
 #
 #  id         :integer         not null, primary key
 #  cliente_id :integer
+#  type       :string(255)
 #  fecha      :date
 #  importe    :decimal(, )
 #  numero     :integer
+#  fechavto   :date
+#  printed_at :date
 #  created_at :datetime
 #  updated_at :datetime
 #
