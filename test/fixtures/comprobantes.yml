@@ -1,0 +1,28 @@
+# == Schema Information
+# Schema version: 20110516183603
+#
+# Table name: comprobantes
+#
+#  id         :integer         not null, primary key
+#  cliente_id :integer
+#  type       :string(255)
+#  fecha      :date
+#  importe    :decimal(, )
+#  numero     :integer
+#  fechavto   :date
+#  printed_at :date
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+#  column: value

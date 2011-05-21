@@ -1,0 +1,27 @@
+# == Schema Information
+# Schema version: 20110516183603
+#
+# Table name: detalles
+#
+#  id              :integer         not null, primary key
+#  detallable_id   :integer
+#  detallable_type :string(255)
+#  descripcion     :string(255)
+#  cantidad        :decimal(, )
+#  preciounitario  :decimal(, )
+#  created_at      :datetime
+#  updated_at      :datetime
+#  tasaiva         :decimal(, )
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+#  column: value
