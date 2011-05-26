@@ -111,19 +111,19 @@ def cuentacorriente
 end
 
 def list_accounts
-  begin
+  #begin
     @accounts = Account.all()
 
     respond_to do |format|
       format.html { redirect_to( clientes_url ) }
       format.xml  { head :ok }
     end
-  rescue ActiveResource::ResourceNotFound, ActiveResource::Redirection, ActiveResource::ResourceInvalid
-    redirect_to("404.html")
-  ensure
+  #rescue ActiveResource::ResourceNotFound, ActiveResource::Redirection, ActiveResource::ResourceInvalid
+  #  redirect_to("404.html")
+  #ensure
     # redirect_to("404.html")
     # paso siempre por aca
-  end
+  #end
 end
 
 protected 

@@ -1,8 +1,9 @@
 class Account < ActiveResource::Base
-  self.site ="http://odiseo-dev.heroku.com/accounts"
-  self.user = "lmpetek"
-  self.password = "lmpetek"
-  self.element_name = "account"
+  #self.site ="http://odiseo-dev.heroku.com/accounts"
+  self.site = "http://localhost:8080/"
+  #self.user = "lmpetek"
+  #self.password = "lmpetek"
+  #self.element_name = "account"
 end
 
 #class PersonResource < ActiveResource::Base

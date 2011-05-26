@@ -30,7 +30,7 @@ class Factura < Comprobante
   
   def total_iva_factura
     #facturadetalles.sum("preciounitario * cantidad * (1+(tasaiva/100))") 
-    facturadetalles.all.sum(&:totalivaitem)
+    detalles.all.sum(&:totalivaitem)
   end
 
   def isprinted?

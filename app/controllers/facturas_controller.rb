@@ -130,7 +130,7 @@ class FacturasController < ApplicationController
           pdf.stroke_bounds          
         end
        @banda = 550   
-       @factura.facturadetalles.each do |item|  
+       @factura.detalles.each do |item|  
           pdf.draw_text format("%5d" % item.cantidad).to_s(), :at => [1,@banda], :size => 10
           pdf.draw_text item.descripcion.to_s(), :at => [100,@banda], :size => 10
           pdf.draw_text item.preciounitario.to_s(), :at => [250,@banda], :size => 10
@@ -154,14 +154,14 @@ class FacturasController < ApplicationController
        end
        
        pdf.draw_text @factura.total_iva_factura.to_s, :at => [350,25], :size => 12, :style => :bold
-       pdf.draw_text @factura.total_factura.to_s, :at => [400,25], :size => 12, :style => :bold
+       pdf.draw_text @factura.importe.to_s, :at => [400,25], :size => 12, :style => :bold
 
        pdf.line_width = 1
        pdf.bounding_box [-2, 40], :width => 500, :height => 20 do
           pdf.stroke_bounds          
        end
        
-       @factura.isprinted = true       
+       @factura.printed_at = Date.today       
      end
      respond_to do |format|
        if @factura.update_attributes(params[:factura])

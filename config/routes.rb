@@ -40,8 +40,9 @@ Ares::Application.routes.draw do
     resources :recibos
     resources :notacreditos
     member do
-      get 'cuentacorriente', :action => :cuentacorriente 
       get 'list_accounts', :action => :list_accounts
+
+      get 'cuentacorriente', :action => :cuentacorriente 
     end
   end  
     
