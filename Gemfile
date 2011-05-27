@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+gem 'rails', '3.0.7'
 gem 'sqlite3'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'formtastic'
@@ -14,7 +14,8 @@ gem 'meta_search'
 gem 'prawn'
 gem 'cancan'
 gem 'wicked_pdf'
-gem 'omniauth', '0.1.6'
+
+gem 'apslabs_oauth_client', :git => 'git://github.com/apslab/apslabs_oauth_client.git'
 
 group :development, :test do
     gem 'annotate'

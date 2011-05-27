@@ -11,6 +11,9 @@ module Ares
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    config.apslabs_federation_app_id = 'ares'
+    config.apslabs_federation_app_key = 'ec85887f354e1447a30649fe3a0908cf33dc269128'
+    config.apslabs_federation_url = 'http://federation.apslabs.com.ar/'
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
@@ -43,6 +46,6 @@ module Ares
     # formtastic datepicker
     config.after_initialize do
       Formtastic::SemanticFormBuilder.send(:include, Apslabs::Formtastic::DatePicker)
-    end
+    end 
   end
 end
