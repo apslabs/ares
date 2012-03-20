@@ -112,11 +112,12 @@ end
 
 def list_accounts
   #begin
-    @accounts = Account.all()
+  
+    @accounts = Account.find(:all, :params => {:user_id => current_user.id})
 
     respond_to do |format|
-      format.html { redirect_to( clientes_url ) }
-      format.xml  { head :ok }
+      format.html 
+      format.xml  { render :xml => @accounts }
     end
   #rescue ActiveResource::ResourceNotFound, ActiveResource::Redirection, ActiveResource::ResourceInvalid
   #  redirect_to("404.html")
